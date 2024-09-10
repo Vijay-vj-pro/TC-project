@@ -71,11 +71,33 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         background-color: rgba(27, 27, 128, 0.87); ;
       }
+      #results{
+        width: 100%;
+      }
       #results p{
         color: #df3546;
         font-size: 20px;
       }
-      
+      #results ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        list-style: none;
+      }
+      #results li{
+        width: 100%;
+        padding: 20px;
+        color: green;
+        background-color: pink;
+        margin: 5px;
+        list-style: none;
+        list-style-image: none;
+      }
+      #results ul li a{
+        color: black;
+        text-decoration: none;
+      }
     </style>
 </head>
 <body>
@@ -108,5 +130,7 @@
     </div>
     </div>
 
+    
+    
 </body>
 </html>
