@@ -1,21 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>{{ image.title }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand" />
     <style>
-        /* Inline CSS for image styling */
+        body {
+            margin: 0;
+            font-family: "Quicksand", serif;
+            font-size: larger;
+            background-color: #e6f0ff;
+            ;
+        }
+
         .image-container img {
-            max-width: 600px; /* Adjust as needed */
-            height: auto; /* Maintain aspect ratio */
+            max-width: 600px;
+            height: auto;
+            border-radius: 30px;
+        }
+        .image-container {
+            border-radius: 20px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            margin: 50px;
+            background-color: white;
+            
+        }
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center ;
+        }
+
+        #header {
+            width: 100%;
+            background-color: dodgerblue;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            color: white;
+        }
+
+        #img-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-left: 165px;
+        }
+
+        #button-header {
+            width: 250px;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        #back-button {
+            background-color: rgb(138, 138, 138);
+            border-radius: 30px;
+            padding: 15px;
+            font-family: "Quicksand", serif;
+            font-weight: 600;
+            border: none;
+            text-decoration: none;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            color: white;
         }
     </style>
 </head>
 
 <body>
-    <h1>{{image.title}}</h1>
-    <div class="image-container">
-        <img src="{{image.image.url}}" alt="{{image.title}}"/>
+    <div id="container">
+        <div id="header">
+            <div id="img-header">
+                <h1>Journal title: {{image.title}}</h1>
+            </div>
+            <div id="button-header">
+
+                <a id="back-button" href="{% url 'search_view' %}">Back to search</a>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="{{image.image.url}}" alt="{{image.title}}" />
+        </div>
+
     </div>
-    <a href="{% url 'search_view' %}">Back to search</a>
 </body>
+
 </html>
