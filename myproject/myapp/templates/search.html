@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% load static%}
 <!DOCTYPE html>
 <html>
@@ -112,5 +113,33 @@
 
     
     
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <form method="get" action="{% url 'search_view' %}">
+        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
+        <button type="submit">Search</button>
+    </form>
+
+    <h2>Results:</h2>
+    {% if results is not None %}
+    {% if results %}
+        <ul>
+            {% for result in results %}
+                <li>
+                    <a href="{% url 'image_detail' result.id %}">{{ result.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+    {% endif %}
+>>>>>>> e21101dcd37e2fa7398c3a4dd42916b9dc08eccc
 </body>
 </html>
