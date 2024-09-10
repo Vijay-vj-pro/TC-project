@@ -1,0 +1,130 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand"/>
+    <style>
+      body {
+        font-family: "Quicksand", serif;
+        font-size: larger;
+        background-color: white;
+      }
+      #header_img {
+        width: 100%;
+        padding-bottom: 5%;
+      }
+      #container {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        width: 80%;
+        background-color: rgba(218, 218, 218, 0.74);
+        border-radius: 10px;
+        display: flex;
+        color: black;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+      }
+      #small-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      #Upload_txt {
+        font-size: 30px;
+        margin: 20px;
+        display: flex;
+      }
+      #image {
+        border: rgb(135, 162, 235) 2px solid;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+      }
+      #title {
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        font-size: medium;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      #submit_btn {
+        width: 90px;
+        background-color: rgba(30, 30, 253, 0.925);
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #submit_btn:hover,
+      #image:hover {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      .message-box {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .success-message {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .error-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+
+    </style>
+  </head>
+  <body>
+
+    <div id="container">
+      <div id="header">
+        <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
+      </div>
+      <div id="small-container">
+
+        <form action="." method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label id="Upload_txt" for="image">Upload Journal Image</label><br />
+          <input type="file" id="image" name="image" accept="image/*" required/><br />
+          <input type="text" id="title" name = "title" placeholder="Enter the Jounal title" required/>
+          <button id="submit_btn" type="submit" >Upload</button>
+
+          <div id="error-block">
+            {% if messages %}
+              {% for message in messages %}
+                {% if message.tags == 'success' %}
+                  <div class="message-box success-message">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                  <div class="message-box error-message">{{ message }}</div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+        
+        
+        </form>
+        
+      </div>
+    </div>
+  </body>
+</html>

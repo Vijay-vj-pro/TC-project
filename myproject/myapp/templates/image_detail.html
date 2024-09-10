@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ image.title }}</title>
+    <style>
+        /* Inline CSS for image styling */
+        .image-container img {
+            max-width: 600px; /* Adjust as needed */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{image.title}}</h1>
+    <div class="image-container">
+        <img src="{{image.image.url}}" alt="{{image.title}}"/>
+    </div>
+    <a href="{% url 'search_view' %}">Back to search</a>
+</body>
+</html>
