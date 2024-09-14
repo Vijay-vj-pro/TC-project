@@ -4,6 +4,6 @@ from .models import datab
 @admin.register(datab)
 
 class databAdmin(admin.ModelAdmin):
-    list_display = ['title','image','content']
+    list_display = ['title','image','content','jn','vn','sn','my',]
     search_fields = ['title','content']
 

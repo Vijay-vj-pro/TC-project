@@ -107,8 +107,18 @@
           {% csrf_token %}
           <label id="Upload_txt">Upload Journal Image</label><br />
           <input type="file" id="image" name="image" accept="image/*" required/><br />
-          <input type="text" id="title" name = "title" placeholder="Enter the Jounal title" required/>
+          <input type="text" id="title" name = "title" placeholder="Enter the Jounal title" required/><br/>
+          <label id="Upload_txt">Journal.No</label>
+          <input type="text" id="jn" name="jn" required/>
+          <label id="Upload_txt">Value.No</label>
+          <input type="text" id="vn" name="vn" required/><br/>
+          <label id="Upload_txt">Issue.No</label>
+          <input type="text" id="sn" name="sn" required/><br/>
+          <label id="Upload_txt">Month/Year</label>
+          <input type="text" id="my" name="my" required/><br/>
+
           <button id="submit_btn" type="submit" >Upload</button>
+          
           <div id="error-block">
             {% if messages %}
               {% for message in messages %}

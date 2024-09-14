@@ -82,7 +82,11 @@
             </div>
         </div>
         <div class="image-container">
-            <img src="{{image.image.url}}" alt="{{image.title}}" />
+            <img src="{{ highlighted_image_url }}" alt="{{image.title}}" />
+            <h1>Journal number: {{image.jn}}</h1>
+            <h1>Value number: {{image.vn}}</h1>
+            <h1>Issue number: {{image.sn}}</h1>
+            <h1>Month/year: {{image.my}}</h1>
         </div>
 
     </div>

@@ -121,7 +121,9 @@
                     <div id="result-block">
                         {% for result in results %}
                             <div id="result-list" >
-                                <a href="{% url 'image_detail' result.id %}">{{ result.title }}</a>
+                              <a href="{% url 'image_detail' result.id %}?keyword={{ query }}">
+                                {{ result.title }}
+                            </a>
                             </div>
                         {% endfor %}
                     </div>
@@ -134,7 +136,5 @@
     </div>
     </div>
 
-    
-    
 </body>
 </html>
