@@ -53,7 +53,8 @@
         cursor: pointer;
         display: flex;
       }
-      #title {
+      .txt_box{
+        width: 300px;
         border: none;
         outline: none;
         border-radius: 5px;
@@ -107,16 +108,16 @@
           {% csrf_token %}
           <label id="Upload_txt">Upload Journal Image</label><br />
           <input type="file" id="image" name="image" accept="image/*" required/><br />
-          <input type="text" id="title" name = "title" placeholder="Enter the Jounal title" required/><br/>
-          <label id="Upload_txt">Journal.No</label>
-          <input type="text" id="jn" name="jn" required/>
-          <label id="Upload_txt">Value.No</label>
-          <input type="text" id="vn" name="vn" required/><br/>
-          <label id="Upload_txt">Issue.No</label>
-          <input type="text" id="sn" name="sn" required/><br/>
-          <label id="Upload_txt">Month/Year</label>
-          <input type="text" id="my" name="my" required/><br/>
-
+          <label id="Title_txt">Journal name</label>
+          <input type="text" id="title" class="txt_box" name = "title" placeholder="Enter the Jounal title" required/><br/>
+          <label id="Journal_txt">Journal No.</label>
+          <input type="text" id="jn" class="txt_box" name="jn" placeholder="Enter the journal number" required/><br/>
+          <label id="Volume_txt">Volume No.</label>
+          <input type="text" id="vn" class="txt_box" name="vn" placeholder="Enter the volume number" required/><br/>
+          <label id="Issue_txt">Issue No.</label>
+          <input type="text" id="sn" class="txt_box" name="sn" placeholder="Enter the Issue number" required/><br/>
+          <label id="Monthyear_txt">Month/Year</label>
+          <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/><br/>
           <button id="submit_btn" type="submit" >Upload</button>
           
           <div id="error-block">
