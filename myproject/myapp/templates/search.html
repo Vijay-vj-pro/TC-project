@@ -37,7 +37,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 20px;
+        padding: 40px;
         flex-wrap: wrap;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
       }
@@ -67,16 +67,18 @@
         border: none;
         padding: 10px;
         margin: 30px;
-        border-radius: 20px;
+        border-radius: 35px;
         cursor: pointer;
+        font-size: 17px;
       }
       #search-btn:hover{
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        background-color: rgba(27, 27, 128, 0.87); ;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        background-color: rgb(27, 27, 128); ;
       }
       #results{
         width: 100%;
         display:flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
       }
@@ -84,38 +86,36 @@
         color: #df3546;
         font-size: 20px;
       }
-      #result-block{
-        width: 100%;
+      #result-list{
         display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 5px;
+        text-align: center;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        list-style: none;
-        margin: 20px;
       }
-      #result-list{
+      #result-a{
+        display: flex;
         width: 100%;
-        padding: 15px;
-        background-color: rgb(209, 232, 252);
-        margin: 5px;
-        list-style: none;
-        list-style-image: none;
+        height: 60px;
+        background-color: rgb(174, 217, 255);
+        border-radius: 5px;
         text-align: center;
-        cursor: pointer;
-        border-radius: 3px;
-      }
-      #result-list:hover{
-        width: 103%;
-        transition: 0.5s;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-      }
-      #result-text{
-        width: 100%;
         color: black;
         text-decoration: none;
         font-size: 20pt;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
       }
-
+      #result-a:hover{
+        width: 103%;
+        transition: 0.5s;
+        font-size: 24pt;
+        background-color:rgb(126, 195, 255);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      }
 
       /* Mobile devices (max-width: 600px) */
       @media only screen and (max-width: 600px) {
@@ -233,20 +233,20 @@
         <h1 id="heading" >Journal search portal</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
         <button id="search-btn" type="submit">Search</button>
-        <h2>Results</h2>
+        
         <div id="results" >
             {% if results is not None %}
                 {% if results %}
-                    <div id="result-block">
+                        <h2>Results</h2>
                         {% for result in results %}
                             <div id="result-list" >
-                              <a href="{% url 'image_detail' result.id %}?keyword={{ query }}">
+                              <a id="result-a" href="{% url 'image_detail' result.id %}?keyword={{ query }}">
                                 {{ result.title }}
                             </a>
                             </div>
                         {% endfor %}
-                    </div>
                 {% else %}
+                    <h2>Results</h2>
                     <p>No results found.</p>
                 {% endif %}
             {% endif %}
