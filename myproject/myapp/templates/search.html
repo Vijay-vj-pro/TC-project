@@ -123,19 +123,18 @@
           font-size: medium;
         }
         form {
-          width: 90%;
-          padding: 10px;
+          width: 80%;
+          padding: 20px;
         }
         #search-box {
-          width: 80%;
-          height: 15px;
+          width: 90%;
+          height: 10px;
           font-size: medium;
+          padding: 12px;
         }
-
         #search-btn {
-          width: 80px;
-          padding: 8px;
-          margin: 20px;
+          width: 100px;
+          padding: 5px;
         }
         #heading {
           font-size: 24px;
@@ -143,84 +142,62 @@
         #result-list {
           width: 100%;
         }
-        #result-text {
+        #result-a {
           font-size: 16pt;
-          
         }
       }
 
-  /* Tablets (min-width: 600px and max-width: 1024px) */
-    @media only screen and (min-width: 600px) and (max-width: 1024px) {
-      body {
-        font-size: large;
+      /* Tablets (min-width: 600px and max-width: 1024px) */
+      @media only screen and (min-width: 600px) and (max-width: 1024px) {
+        body {
+          font-size: large;
+        }
+        #header_img {
+          margin-bottom: 7%;
+        }
+        form {
+          width: 80%;
+          padding: 30px;
+        }
+        #search-box {
+          width: 70%;
+          font-size: large;
+        }
+        #search-btn {
+          width: 110px;
+        }
+        #heading {
+          font-size: 28px;
+        }
+        #result-list {
+          width: 95%;
+        }
+        #result-a {
+          font-size: 18pt;
+        }
       }
 
-      #header_img {
-        margin-bottom: 7%;
+      /* Laptops and Desktops (min-width: 1024px) */
+      @media only screen and (min-width: 1024px) {
+        form {
+          width: 80%;
+        }
+        #search-box {
+          width: 60%;
+        }
+        #search-btn {
+          width: 120px;
+        }
+        #heading {
+          font-size: 30px;
+        }
+        #result-list {
+          width: 100%;
+        }
+        #result-a {
+          font-size: 20pt;
+        }
       }
-
-      #small-container {
-        width: 100%;
-        height: 100%;
-      }
-
-      form {
-        width: 100%;
-        height: 100%;
-      }
-
-      #search-box {
-        width: 300px;
-      }
-
-      #search-btn {
-        width: 90px;
-      }
-
-      #heading {
-        font-size: 26px;
-      }
-
-      #result-list {
-        width: 95%;
-      }
-
-      #result-text {
-        font-size: 18pt;
-      }
-    }
-
-  /* Laptops and Desktops (min-width: 1024px) */
-    @media only screen and (min-width: 1024px) {
-
-      #small-container {
-        width: 100%;
-      }
-
-      form {
-        width: 80%;
-      }
-
-      #search-box {
-        width: 50%;
-      }
-
-      #search-btn {
-        width: 100px;
-      }
-
-      #heading {
-        font-size: 30px;
-      }
-
-      #result-list {
-        width: 100%;
-      }
-
-      #result-text {
-        font-size: 20pt;
-      }
-    }
     </style>
 </head>
 <body>

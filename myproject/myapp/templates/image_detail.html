@@ -10,26 +10,30 @@
             font-family: "Quicksand", serif;
             font-size: larger;
             background-color: #e6f0ff;
-            ;
         }
-
         .image-container img {
-            max-width: 600px;
+            max-width: 700px;
             height: auto;
-            border-radius: 30px;
+            display: flex;
+            margin-top: 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         .image-container {
+            padding: 40px;
             border-radius: 20px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            margin: 50px;
-            background-color: white;
-            
-        }
-        #container {
+            margin: 30px;
+            background-color: rgb(255, 255, 255);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center ;
+            align-items: flex-start;
+        }
+        #container {
+          background-color: #cce0ff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center ;
         }
 
         #header {
@@ -40,8 +44,10 @@
             display: flex;
             flex-direction: row;
             color: white;
+            margin-bottom: 40px;
             box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
         }
+
         #img-header {
             width: 500px;
             display: flex;
@@ -55,7 +61,7 @@
             height: 10px;
             width: 50px;
             font-size: 15px;
-            background-color: rgba(199, 199, 199, 0.637);
+            background-color: rgb(0, 17, 255);
             border-radius: 30px;
             padding: 8px 15px;
             font-family: "Quicksand", serif;
@@ -68,46 +74,23 @@
             box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             background-color: rgba(151, 151, 151, 0.699);
         }
-
+        #journal-details{
+          margin: 10px;
+        }
 
         /* Mobile devices (max-width: 600px) */
   @media only screen and (max-width: 600px) {
-    .image-container img {
-      max-width: 100%; /* Full width for mobile */
-      border-radius: 15px;
+    #header{
+      height: 60px;
     }
-
-    .image-container {
-      margin: 20px;
-      padding: 10px;
+    #img-header h1{
+      font-size: 15pt;
     }
-
-    #header {
-      flex-direction: row;
-      padding: 10px;
-      height: 10vh;
+    #button-header{
+      width: 20%;
     }
-
-    #img-header {
-      padding-left: 10px;
-      width: 100px;
-      height: 30%;
-    }
-
-    #button-header {
-      width: 100%;
-      justify-content: center;
-      padding: 10px;
-    }
-
-    #back-button {
-      width: 30%;
-      padding: 10px;
-      
-    }
-
-    h1 {
-      font-size: 24px;
+    #back-button{
+      width: 10px;
     }
   }
 
@@ -138,12 +121,14 @@
                 <a id="back-button" href="{% url 'search_view' %}">Back</a>
             </div>
         </div>
+        <div id="container" >
         <div class="image-container">
+            <h5 id="journal-details" >Journal number...............: {{image.jn}}</h5>
+            <h5 id="journal-details" >Volume number...............: {{image.vn}}</h5>
+            <h5 id="journal-details" >Issue number.....................: {{image.sn}}</h5>
+            <h5 id="journal-details" >Month / year......................: {{image.my}}</h5>  
             <img src="{{ highlighted_image_url }}" alt="{{image.title}}" />
-            <h1>Journal number: {{image.jn}}</h1>
-            <h1>Value number: {{image.vn}}</h1>
-            <h1>Issue number: {{image.sn}}</h1>
-            <h1>Month/year: {{image.my}}</h1>
+        </div>
         </div>
 
     </div>
