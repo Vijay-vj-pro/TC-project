@@ -148,6 +148,19 @@
       <div id="small-container">
         <form action="." method="post" enctype="multipart/form-data">
           {% csrf_token %}
+
+          <div id="error-block">
+            {% if messages %}
+              {% for message in messages %}
+                {% if message.tags == 'success' %}
+                  <div class="message-box success-message">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                  <div class="message-box error-message">{{ message }}</div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+
           <label id="Upload_txt">Upload Journal Image</label><br />
           <input type="file" id="image" name="image" accept="image/*" required/><br />
           
@@ -163,17 +176,7 @@
           <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/><br/>
           <button id="submit_btn" type="submit" >Upload</button>
           
-          <div id="error-block">
-            {% if messages %}
-              {% for message in messages %}
-                {% if message.tags == 'success' %}
-                  <div class="message-box success-message">{{ message }}</div>
-                {% elif message.tags == 'error' %}
-                  <div class="message-box error-message">{{ message }}</div>
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-          </div>
+          
         </form>
       </div>
     </div>
