@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"/>
     <title>Search Results</title>
     <style>
       
       body{
         margin: 0;
-        font-family: "Quicksand", serif;
+        font-family: "Poppins", serif;
         font-size: larger;
         background-color: #e6f0ff;
       }
@@ -52,15 +52,15 @@
         outline: none;
         border-radius: 30px;
         font-size: 14pt;
-        font-family: "Quicksand", serif;
+        font-family: "Poppins", serif;
         padding: 10px 10px 10px 15px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
-      #search-box:hover{
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      #search-box:hover, #search-box:focus{
+        box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 6px, rgba(0, 0, 0, 0.5) 0px 9px 15px -5px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
       #search-btn {
-        font-family: "Quicksand", serif;
+        font-family: "Poppins", serif;
         width: 90px;
         background-color: rgba(30, 30, 253, 0.925);
         color: white;
@@ -70,9 +70,10 @@
         border-radius: 35px;
         cursor: pointer;
         font-size: 17px;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
       #search-btn:hover{
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        box-shadow: rgba(14, 30, 37, 0.4) 0px 2px 4px 0px, rgba(14, 30, 37, 0.4) 0px 2px 16px 0px;
         background-color: rgb(27, 27, 128); ;
       }
       #results{
