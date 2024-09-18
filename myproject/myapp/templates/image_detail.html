@@ -18,10 +18,10 @@
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         .image-container {
+            margin: 30px;
             padding: 40px;
             border-radius: 20px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            margin: 30px;
             background-color: rgb(255, 255, 255);
             display: flex;
             flex-direction: column;
@@ -32,9 +32,15 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
-          align-items: center ;
+          align-items: center;
         }
-
+        #small-container{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: flex-start;
+        }
         #header {
             width: 100%;
             background-color: dodgerblue;
@@ -48,10 +54,14 @@
         }
 
         #img-header {
-            width: 500px;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-left: 30px;
+        }
+        #img-header h1{
+          font-weight: 300  ;
         }
         #button-header{
             padding-right: 50px;
@@ -74,8 +84,10 @@
           box-shadow: rgba(14, 30, 37, 0.4) 0px 2px 4px 0px, rgba(14, 30, 37, 0.4) 0px 2px 16px 0px;
             background-color: rgba(3, 5, 136, 0.993);
         }
-        #journal-details{
+        .journal-details{
           margin: 10px;
+          font-size: large;
+          font-weight: 200;
         }
 
         /* Mobile devices (max-width: 600px) */
@@ -121,17 +133,17 @@
                 <a id="back-button" href="{% url 'search_view' %}">Back</a>
             </div>
         </div>
-        <div id="container" >
+        <div id="small-container" >
         <div class="image-container">
-            <h5 id="journal-details" >Journal number...............: {{image.jn}}</h5>
-            <h5 id="journal-details" >Volume number...............: {{image.vn}}</h5>
-            <h5 id="journal-details" >Issue number.....................: {{image.sn}}</h5>
-            <h5 id="journal-details" >Month / year......................: {{image.my}}</h5>  
-            <img src="{{ highlighted_image_url }}" alt="{{image.title}}" />
+            <a href="{{ highlighted_image_url }}" target="_blank"><img src="{{ highlighted_image_url }}" alt="{{image.title}}" /></a>
+        </div>
+        <div class="image-container">
+            <h5 class="journal-details" >Journal number : {{image.jn}}</h5>
+            <h5 class="journal-details" >Volume number : {{image.vn}}</h5>
+            <h5 class="journal-details" >Issue number : {{image.sn}}</h5>
+            <h5 class="journal-details" >Month / year : {{image.my}}</h5>  
         </div>
         </div>
-
     </div>
 </body>
-
 </html>
