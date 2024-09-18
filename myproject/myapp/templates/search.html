@@ -117,6 +117,11 @@
         background-color: black 2px solid;
         width: 90%;
       }
+      #journal-list-page{
+        position: relative;
+        top: 30px;
+        left: 480px;
+      }
 
       /* Mobile devices (max-width: 600px) */
       @media only screen and (max-width: 600px) {
@@ -211,6 +216,7 @@
     </div>
     <div id="small-container">
     <form method="get" action="{% url 'search_view' %}">
+        <a id="journal-list-page" href="journal_list.html" >List of journals</a>
         <h1 id="heading" >Journal search portal</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
         <button id="search-btn" type="submit">Search</button>
