@@ -1,0 +1,182 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"/>
+    <style>
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        font-family: "Poppins", serif;
+        font-size: larger;
+        background-color: #e6f0ff;;
+      }
+      #header_img {
+        width: 100%;
+        margin-bottom: 5%;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      }
+      #container {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+      }
+      form {
+        width: 80%;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        color: black;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+        flex-wrap: wrap;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+      #small-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 100px;
+      }
+      #Upload_txt {
+        font-size: 30px;
+        margin: 20px;
+        display: flex;
+      }
+      #image {
+        width: 300px;
+        border: rgb(135, 162, 235) 2px solid;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+
+      }
+      .txt_box{
+        width: 300px;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        outline: none;
+        border: none;
+        font-size: medium;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px;
+      }
+      .txt_box:focus, .txt_box:hover{
+        border: rgb(135, 162, 235) 2px solid;
+        width: 340px;
+        transition:0.3s;
+      }
+      #submit_btn {
+        width: 90px;
+        background-color: rgba(30, 30, 253, 0.925);
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 30px;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+      #submit_btn:hover{
+        box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
+        background-color: rgba(24, 134, 14, 0.904);
+        transition: 500ms;
+      }
+      #image:hover {
+        background-color: rgb(135, 162, 235);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      #search_page_div{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 550px;
+        left: 1270px;
+        background-color: rgb(68, 102, 255);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      }
+      #search_page_div a{
+        font-size: 13px;
+        font-weight: 300;
+        text-decoration: none;
+        color: black;
+      }
+      #search_page_div:hover{
+        background-color: rgb(29, 29, 146);
+        box-shadow: 0px 0px 16px 4px rgba(38,38,255,3);
+        transition: 0.3s;
+      }
+      .message-box {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .success-message {
+        background-color: #aee9bc;
+        color: #07571a;
+        border: 1px solid #93eba7;
+      }
+      .error-message {
+        background-color: #e7a7ac;
+        color: #69131c;
+        border: 1px solid #e68d96;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
+      </div>
+      <div id="search_page_div" >
+        <a href="{% url 'search_view' %}" > <img id="search_logo" src="{% static 'images/search_icon.png' %}" alt="search icon" style="width: 30px; padding: 10px;" > </a>
+      </div>
+      <div id="small-container">
+        <form action="." method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <div id="error-block">
+            {% if messages %}
+              {% for message in messages %}
+                {% if message.tags == 'success' %}
+                  <div class="message-box success-message">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                  <div class="message-box error-message">{{ message }}</div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
+
+          <label id="Upload_txt">Upload Journal Image</label><br />
+          <input type="file" id="image" name="image" accept="image/*" required/><br />
+          
+          <label id="Title_txt">Journal name</label>
+          <input type="text" id="title" class="txt_box" name = "title" placeholder="Enter the journal title" required/><br/>
+          <label id="Journal_txt">Journal No.</label>
+          <input type="text" id="jn" class="txt_box" name="jn" placeholder="Enter the journal number" required/><br/>
+          <label id="Volume_txt">Volume No.</label>
+          <input type="text" id="vn" class="txt_box" name="vn" placeholder="Enter the volume number" required/><br/>
+          <label id="Issue_txt">Issue No.</label>
+          <input type="text" id="sn" class="txt_box" name="sn" placeholder="Enter the Issue number" required/><br/>
+          <label id="Monthyear_txt">Month/Year</label>
+          <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/><br/>
+          <button id="submit_btn" type="submit" >Upload</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
