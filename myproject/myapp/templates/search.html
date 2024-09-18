@@ -99,23 +99,22 @@
       #result-a{
         display: flex;
         width: 100%;
-        height: 60px;
-        background-color: rgb(174, 217, 255);
-        border-radius: 5px;
+        height: 40px;
+        background-color: transparent;
         text-align: center;
-        color: black;
-        text-decoration: none;
         font-size: 20pt;
+        text-decoration: none;
         justify-content: center;
         align-items: center;
-        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
       }
       #result-a:hover{
         width: 103%;
         transition: 0.5s;
         font-size: 24pt;
-        background-color:rgb(126, 195, 255);
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      }
+      hr{
+        background-color: black 2px solid;
+        width: 90%;
       }
 
       /* Mobile devices (max-width: 600px) */
@@ -218,8 +217,9 @@
                         <h2>Results</h2>
                         {% for result in results %}
                             <div id="result-list" >
+                              <hr>
                               <a id="result-a" href="{% url 'image_detail' result.id %}?keyword={{ query }}">
-                                {{ result.title }}
+                                ➡ {{ result.title }}
                             </a>
                             </div>
                         {% endfor %}
