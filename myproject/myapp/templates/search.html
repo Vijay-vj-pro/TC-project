@@ -10,7 +10,7 @@
         margin: 0;
         font-family: "Poppins", serif;
         font-size: larger;
-        /*background-image: url('{% static 'images/bg.jpg' %}');*/
+        background-image: url("{% static 'images/bg.jpg' %}");
         background-repeat: no-repeat;
         background-position:center;
         background-size: cover;
@@ -134,6 +134,7 @@
         box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
         border-radius: 10px;
         background-color: rgba(238, 238, 238, 0.808);
+        outline: none;
       }
       #journal-list-page:hover{
         box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
@@ -232,7 +233,14 @@
     </div>
     <div id="small-container">
     <form method="get" action="{% url 'search_view' %}">
-        <a id="journal-list-page" href="journal_list.html" >List of journals</a>
+        <select name="year" id="journal-list-page">
+          <option selected disabled >Select the year</option>
+          <option class="year-option" value="year1" >2021</option>
+          <option class="year-option" value="year2" >2022</option>
+          <option class="year-option" value="year3" >2023</option>
+          <option class="year-option" value="year4" >2024</option>
+          <option class="year-option" value="year5" >2025</option>
+        </select>
         <h1 id="heading" >Journal search portal</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
         <button id="search-btn" type="submit">Search</button>
