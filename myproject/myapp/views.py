@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import datab , datab2
+from .models import datab 
 from PIL import Image
 from django.db.models import Q
 import pytesseract
@@ -123,8 +123,9 @@ def image_detail(request, id):
 
     return render(request, 'image_detail.html', {'highlighted_image_url': highlighted_image_url, 'image' : image})
 
-'''
+
 def year_fun(request):
+    '''
     year = request.POST.get('year')
     pdf = request.FILES.get('pdf')
     
@@ -138,6 +139,5 @@ def year_fun(request):
             
     else:
         messages.error("File not found")
-            
+            '''
     return render(request,'upload_year.html')
-'''
