@@ -11,5 +11,12 @@ class datab(models.Model):
 
     def __str__(self):
         return self.title
+  
+'''  
+class datab2(models.Model):
+    year = models.IntegerField(max_length=225)
+    pdf = models.FileField(upload_to='images/')
     
-    
+    def __str__(self):
+        return self.title
+'''    

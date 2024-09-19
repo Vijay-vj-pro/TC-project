@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import datab
+from .models import datab , datab2
 from PIL import Image
 from django.db.models import Q
 import pytesseract
@@ -8,6 +8,8 @@ import cv2
 from pytesseract import Output
 from django.conf import settings
 from pathlib import Path
+
+pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 176\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 
 def highlight_text_in_image(image_path, keyword, output_path):
@@ -120,3 +122,22 @@ def image_detail(request, id):
     highlighted_image_url = f"{settings.MEDIA_URL}{relative_path}"
 
     return render(request, 'image_detail.html', {'highlighted_image_url': highlighted_image_url, 'image' : image})
+
+'''
+def year_fun(request):
+    year = request.POST.get('year')
+    pdf = request.FILES.get('pdf')
+    
+    if year and pdf:
+        try:
+            doc2 = datab2.objects.create(year=year,pdf=pdf)
+            doc2.save()
+            messages.success("Uploaded successfully")    
+        except:
+            messages.error("Not uploaded")
+            
+    else:
+        messages.error("File not found")
+            
+    return render(request,'upload_year.html')
+'''
