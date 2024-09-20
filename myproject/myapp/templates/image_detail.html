@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{ image.title }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", serif;
+            background-color: #e6f0ff;
+        }
+        .image-container img {
+            max-width: 700px;
+            height: auto;
+            display: flex;
+            margin-top: 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+        .image-container {
+            margin: 30px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        #container {
+          background-color: #cce0ff;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        #small-container{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          align-items: flex-start;
+        }
+        #header {
+            width: 100%;
+            background-color: dodgerblue;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            color: white;
+            margin-bottom: 40px;
+            box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
+        }
+
+        #img-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 30px;
+        }
+        #img-header h1{
+          font-weight: 300  ;
+        }
+        #button-header{
+            padding-right: 50px;
+        }
+        #back-button {
+            height: 10px;
+            width: 50px;
+            font-size: 15px;
+            background-color: rgb(0, 17, 255);
+            border-radius: 30px;
+            padding: 8px 15px;
+            font-family: "Poppins", serif;
+            font-weight: 500;
+            border: none;
+            text-decoration: none;
+            color: white;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        }
+        #back-button:hover{
+          box-shadow: rgba(14, 30, 37, 0.4) 0px 2px 4px 0px, rgba(14, 30, 37, 0.4) 0px 2px 16px 0px;
+            background-color: rgba(3, 5, 136, 0.993);
+        }
+        .journal-details{
+          margin: 10px;
+          font-size: large;
+          font-weight: 200;
+        }
+
+        /* Mobile devices (max-width: 600px) */
+  @media only screen and (max-width: 600px) {
+    #header{
+      height: 60px;
+    }
+    #img-header h1{
+      font-size: 15pt;
+    }
+    #button-header{
+      width: 20%;
+    }
+    #back-button{
+      width: 10px;
+    }
+  }
+
+  /* Tablets (max-width: 1024px) */
+  @media only screen and (max-width: 1024px) {
+    .image-container img {
+      max-width: 80%; /* Adjust for tablets */
+    }
+
+    #img-header {
+      padding-left: 0;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+  }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="img-header">
+                <h1>Journal title: {{image.title}}</h1>
+            </div>
+            <div id="button-header">
+                <a id="back-button" href="{% url 'search_view' %}">Back</a>
+            </div>
+        </div>
+        <div id="small-container" >
+        <div class="image-container">
+            <a href="{{ highlighted_image_url }}" target="_blank"><img src="{{ highlighted_image_url }}" alt="{{image.title}}" /></a>
+        </div>
+        <div class="image-container">
+            <h5>Journal details</h5>
+            <h5 class="journal-details" >Journal number : {{image.jn}}</h5>
+            <h5 class="journal-details" >Volume number : {{image.vn}}</h5>
+            <h5 class="journal-details" >Issue number : {{image.sn}}</h5>
+            <h5 class="journal-details" >Month / year : {{image.my}}</h5>  
+        </div>
+        </div>
+    </div>
+</body>
+</html>
