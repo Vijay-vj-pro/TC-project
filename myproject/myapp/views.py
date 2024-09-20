@@ -101,7 +101,7 @@ def imageUpload(request):
 
 
 def search_view(request):
-    query = request.GET.get('q', '')
+    query = request.GET.get('q','')
     keyword = query
     if query:
         matches = datab.objects.filter(content__icontains=query)
@@ -132,8 +132,8 @@ def year_fun(request):
             doc2 = datab2.objects.create(year=year,pdf=pdf)
             doc2.save()
             messages.success(request,"Uploaded successfully")    
-        except:
-            messages.error(request,"Not uploaded")
+        except Exception as e:
+            messages.error(request,f"Not uploaded{e}")
             
     else:
         messages.error(request,"File not found")
