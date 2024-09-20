@@ -18,4 +18,4 @@ class datab2(models.Model):
     pdf = models.FileField(upload_to='pdfs/')
     
     def __str__(self):
-        return self.year
+       return f"{self.year} - {self.pdf.name}"  
