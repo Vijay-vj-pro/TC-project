@@ -17,7 +17,6 @@
       }
       #header_img {
         width: 100%;
-        margin-bottom: 5%;
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
       }
       #container {
@@ -26,10 +25,15 @@
         align-items: center;
         display: flex;
         flex-direction: column;
+        background-image: url("{% static 'images/bg.jpg' %}");
+        background-repeat: no-repeat;
+        background-position:center;
+        background-size: cover;
       }
       form {
         width: 80%;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.199);
+        backdrop-filter: blur(25px);
         border-radius: 10px;
         display: flex;
         color: black;
@@ -39,6 +43,7 @@
         padding: 20px;
         flex-wrap: wrap;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border: rgba(255, 255, 255, 0.555) 1px solid ;
       }
       #small-container {
         width: 100%;
@@ -60,10 +65,20 @@
         padding: 10px;
         cursor: pointer;
         display: flex;
-
+        border-radius: 10px;
+      }
+      .inner-div{
+        width: 60%;
+        height: 60px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
       }
       .txt_box{
         width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
         outline: none;
         border: none;
@@ -71,15 +86,22 @@
         border-radius: 8px;
         padding: 10px;
         margin: 10px;
+        background-color: rgba(138, 138, 138, 0.041);
+        border: white 2px solid;
+        backdrop-filter: blur(10px);        
+      }
+      .label-txt{
+        width: 30%;
+        display: flex;
+        justify-content: flex-end;
       }
       .txt_box:focus, .txt_box:hover{
         border: rgb(135, 162, 235) 2px solid;
-        width: 340px;
-        transition:0.3s;
+        background-color: rgba(255, 255, 255, 0.726);
       }
       #submit_btn {
         width: 90px;
-        background-color: rgba(30, 30, 253, 0.925);
+        background-color: rgb(28, 28, 158);
         color: white;
         border: none;
         padding: 10px;
@@ -162,16 +184,26 @@
           </div>
           <label id="Upload_txt">Upload Journal Image</label><br />
           <input type="file" id="image" name="image" accept="image/*" required/><br />
-          <label id="Title_txt">Journal name</label>
-          <input type="text" id="title" class="txt_box" name = "title" placeholder="Enter the journal title" required/><br/>
-          <label id="Journal_txt">Journal No.</label>
-          <input type="text" id="jn" class="txt_box" name="jn" placeholder="Enter the journal number" required/><br/>
-          <label id="Volume_txt">Volume No.</label>
-          <input type="text" id="vn" class="txt_box" name="vn" placeholder="Enter the volume number" required/><br/>
-          <label id="Issue_txt">Issue No.</label>
-          <input type="text" id="sn" class="txt_box" name="sn" placeholder="Enter the Issue number" required/><br/>
-          <label id="Monthyear_txt">Month/Year</label>
-          <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/><br/>
+          <div class="inner-div">
+            <label class="label-txt" id="Title_txt">Journal name  :</label>
+            <input type="text" id="title" class="txt_box" name = "title" placeholder="Enter the journal title" required/><br/>
+          </div>
+          <div class="inner-div">
+            <label class="label-txt" id="Journal_txt">Journal No  :</label>
+            <input type="text" id="jn" class="txt_box" name="jn" placeholder="Enter the journal number" required/><br/>
+          </div>
+          <div class="inner-div">
+            <label class="label-txt" id="Volume_txt">Volume No  :</label>
+            <input type="text" id="vn" class="txt_box" name="vn" placeholder="Enter the volume number" required/><br/>
+          </div>
+          <div class="inner-div">
+            <label class="label-txt" id="Issue_txt">Issue No  :</label>
+            <input type="text" id="sn" class="txt_box" name="sn" placeholder="Enter the Issue number" required/><br/>
+          </div>
+          <div class="inner-div">
+            <label class="label-txt" id="Monthyear_txt">Month/Year  :</label>
+            <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/><br/>
+          </div>
           <button id="submit_btn" type="submit" >Upload</button>
         </form>
       </div>
