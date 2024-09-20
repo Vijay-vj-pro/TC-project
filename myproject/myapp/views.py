@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from .models import datab 
+from .models import datab , datab2
 from PIL import Image
 from django.db.models import Q
 import pytesseract
@@ -107,14 +107,14 @@ def search_view(request):
         matches = datab.objects.filter(content__icontains=query)
     else:
         matches = None
-    return render(request, 'search.html', {'results': matches, 'query': query})
+    return render(request, 'search.html',{'results': matches, 'query': query})
 
 
 def image_detail(request, id):
     image = get_object_or_404(datab, id=id)
     keyword = request.GET.get('keyword', '')
 
-    highlight_path = Path(settings.MEDIA_ROOT) / f"highlighted_images/highlight_img_.jpg"
+    highlight_path = Path(settings.MEDIA_ROOT)/f"highlighted_images/highlight_img_.jpg"
     
     output_path = highlight_text_in_image(image.image.path,keyword,str(highlight_path))
     
@@ -125,19 +125,17 @@ def image_detail(request, id):
 
 
 def year_fun(request):
-    '''
     year = request.POST.get('year')
     pdf = request.FILES.get('pdf')
-    
     if year and pdf:
         try:
             doc2 = datab2.objects.create(year=year,pdf=pdf)
             doc2.save()
-            messages.success("Uploaded successfully")    
+            messages.success(request,"Uploaded successfully")    
         except:
-            messages.error("Not uploaded")
+            messages.error(request,"Not uploaded")
             
     else:
-        messages.error("File not found")
-            '''
+        messages.error(request,"File not found")
+
     return render(request,'upload_year.html')

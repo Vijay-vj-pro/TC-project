@@ -39,7 +39,23 @@
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
     </div>
     <div id="container">
-
     </div>
+      <form action ="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          <label id="year_txt">Journal name</label>
+          <input type="text" id="year" class="txt_box" name = "year" placeholder="Enter the year" required/><br/>
+          <label id="file_txt">Upload Journal Image</label>
+          <input type="file" id="pdf" name="pdf" accept="pdf/*" required/><br/>
+          <button id="submit_btn" type="submit" >Upload</button>
+         {% if messages %}
+          {% for message in messages %} 
+            {% if message.tags == 'success' %}
+              {{ message }}
+            {% elif message.tags == 'error' %}
+              {{ message }}
+            {% endif %}
+        {% endfor %}
+      {% endif %}
+      </form>
 </body>
 </html>
