@@ -8,6 +8,7 @@ import cv2 # type: ignore
 from pytesseract import Output
 from django.conf import settings
 from pathlib import Path
+import os
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 176\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
@@ -68,9 +69,6 @@ def remove_stop_words(text):
     return ' '.join(filtered_words)
 
 def imageUpload(request):
-
-    global count
-
     if request.method == 'POST':
         title=request.POST.get('title')
         image=request.FILES.get('image')
@@ -100,7 +98,16 @@ def imageUpload(request):
         else:
             messages.error(request,'Title and image are required')
 
-    return render(request,'upload.html')
+    count_file = os.path.join(settings.MEDIA_ROOT, 'data', 'count_viewers.txt')
+
+    if not os.path.exists(count_file):
+            with open(count_file,'w') as file:
+                file.write('0')
+
+    with open(count_file,'r') as file:
+        count = int(file.read())
+  
+    return render(request,'upload.html',{'count':count})
 
 
 def search_view(request):
@@ -122,6 +129,23 @@ def search_view(request):
             if record.year not in seen_years:
                 years.append(record)
                 seen_years.add(record.year)
+
+    count_file = os.path.join(settings.MEDIA_ROOT,'data','count_viewers.txt')
+    os.makedirs(os.path.dirname(count_file),exist_ok = True)
+
+    try:
+        with open(count_file,'r') as file:
+            count = int(file.read())
+    except FileNotFoundError:
+        count = 0
+    except ValueError:
+        count = 0
+
+    count += 1 
+
+    with open(count_file, 'w') as file:
+        file.write(str(count)) 
+
     return render(request, 'search.html',{'results': matches,'query':query, 'years':years})
 
 
