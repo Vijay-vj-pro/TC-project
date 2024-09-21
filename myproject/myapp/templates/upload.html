@@ -154,6 +154,7 @@
           <img src="{% static 'images/search_icon.png' %}" alt="search icon" />
         </a>
       </div>
+      <h2>|  {{ count }}  |</h2>
       <div id="small-container">
         <form action="." method="post" enctype="multipart/form-data">
           {% csrf_token %}
