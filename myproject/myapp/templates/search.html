@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins"/>
     <title>Journal Search Portal</title>
     <style>
-      
       body{
         margin: 0;
         font-family: "Poppins", serif;
@@ -23,18 +22,24 @@
         width: 100%;
         justify-content: center;
         align-items: center;
+        display: flex;
+        flex-direction: column;
       }
       #small-container {
-        width: 100%;
+        background-color: rgba(255, 255, 255, 0.144);
+        backdrop-filter: blur(20px);
+        width: 80%;
         height: 100%;
         display: flex;
         flex-wrap: wrap;
+        position: relative;
+        border: 1px rgba(255, 255, 255, 0.486) solid;
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
         justify-content: center;
       }
       form {
-        width: 80%;
-        background-color: rgba(255, 255, 255, 0.144);
-        backdrop-filter: blur(20px);
+        width: 90%;
         border-radius: 10px;
         display: flex;
         color: black;
@@ -43,8 +48,6 @@
         flex-direction: column;
         padding: 40px;
         flex-wrap: wrap;
-        border: 1px rgba(255, 255, 255, 0.363) solid;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       }
       #heading{
         font-size: 30px;
@@ -59,8 +62,7 @@
         outline: none;
         border-radius: 30px;
         background-color: rgba(255, 255, 255, 0.600);
-
-        font-size: 14pt;
+        font-size: 12pt;
         font-family: "Poppins", serif;
         padding: 10px 10px 10px 15px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
@@ -74,16 +76,17 @@
         background-color: rgba(30, 30, 253, 0.925);
         color: white;
         border: none;
-        padding: 10px;
+        padding: 8px;
         margin: 30px;
         border-radius: 35px;
         cursor: pointer;
-        font-size: 17px;
+        font-size: 15px;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
       }
       #search-btn:hover{
-        box-shadow: rgba(14, 30, 37, 0.4) 0px 2px 4px 0px, rgba(14, 30, 37, 0.4) 0px 2px 16px 0px;
-        background-color: rgb(27, 27, 128); ;
+        box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
+        background-color: rgba(24, 134, 14, 0.904);
+        transition: 500ms;
       }
       #results{
         width: 100%;
@@ -96,7 +99,11 @@
         font-weight: 400;
       }
       #results p{
-        color: #df3546;
+        background-color: #e7a7ac;
+        color: #69131c;
+        border: 1px solid #e68d96;
+        padding: 10px;
+        border-radius: 10px;
         font-size: 20px;
       }
       #result-list{
@@ -131,24 +138,22 @@
         background-color: black 3px solid;
         width: 90%;
       }
-      #journal-list-page{
-        top: 250px;
-        right: 180px;
-        text-decoration: none;
-        display: flex;
-        justify-content: center;
-        align-self: flex-end;
-        width: 160px;
-        height: 30px;
-        padding: 5px;
-        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
-        border-radius: 10px;
-        background-color: rgba(238, 238, 238, 0.123);
-        backdrop-filter: blur(2px);
-        outline: none;
+      #year-button-div{
+        background-color: transparent;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: flex ;
       }
-      #journal-list-page:hover{
-        background-color: rgba(255, 255, 255, 0.877);
+      #pdfs{
+        background-color: rgba(255, 255, 255, 0.315);
+        padding: 5px;
+        outline: none;
+        border: 1px rgba(255, 255, 255, 0.452) solid;
+        border-radius: 10px;
+      }
+      #pdfs:hover{
+        cursor: pointer;
       }
 
       /* Mobile devices (max-width: 600px) */
@@ -213,28 +218,6 @@
           font-size: 18pt;
         }
       }
-
-      /* Laptops and Desktops (min-width: 1024px) */
-      @media only screen and (min-width: 1024px) {
-        form {
-          width: 80%;
-        }
-        #search-box {
-          width: 60%;
-        }
-        #search-btn {
-          width: 120px;
-        }
-        #heading {
-          font-size: 30px;
-        }
-        #result-list {
-          width: 100%;
-        }
-        #result-a {
-          font-size: 20pt;
-        }
-      }
     </style>
 </head>
 <body>
@@ -242,26 +225,25 @@
     <div id="header">
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
     </div>
-
-    <form method="get" action="{% url 'search_view' %}">
-      <button id="pdfs" name="pdfs" type="submit" value="1">Journal List</button>
-      {% if years %}
-      <ul>
-        {% for year in years %}
-            <li>
-              <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
-            </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-  </form>
-
     <div id="small-container">
+      <div id="year-button-div">
+        <form method="get" action="{% url 'search_view' %}">
+          <select id="pdfs" name="pdfs" type="submit" value="1">
+            <option selected disabled> Select the year </option>
+              {% if years %}
+                {% for year in years %}
+                  <option>
+                    <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
+                  </option>
+                {% endfor %}
+              {% endif %}
+          </select>
+        </form>
+      </div>
     <form method="get" action="{% url 'search_view' %}">
         <h1 id="heading" >Journal search portal</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
         <button id="search-btn" type="submit">Search</button>
-        
         <div id="results" >
             {% if results is not None %}
                 {% if results %}

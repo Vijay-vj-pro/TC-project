@@ -1,4 +1,4 @@
-{% load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +13,7 @@
         height: 100vh;
         font-family: "Poppins", serif;
         font-size: larger;
-        background-color: #e6f0ff;;
+        background-color: #e6f0ff;
       }
       #header_img {
         width: 100%;
@@ -27,7 +27,7 @@
         flex-direction: column;
         background-image: url("{% static 'images/bg.jpg' %}");
         background-repeat: no-repeat;
-        background-position:center;
+        background-position: center;
         background-size: cover;
       }
       form {
@@ -36,68 +36,59 @@
         backdrop-filter: blur(25px);
         border-radius: 10px;
         display: flex;
-        color: black;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
         padding: 20px;
-        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        border: rgba(255, 255, 255, 0.6) 1px solid ;
+        border: rgba(255, 255, 255, 0.6) 1px solid;
       }
       #small-container {
-        width: 100%;
-        height: 100%;
+        width: 90%;
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         margin-bottom: 100px;
+        margin: 20px;
       }
       #Upload_txt {
         font-size: 30px;
         margin: 20px;
-        display: flex;
       }
       #image {
         width: 300px;
         border: rgb(135, 162, 235) 2px solid;
         padding: 10px;
         cursor: pointer;
-        display: flex;
         border-radius: 10px;
       }
-      .inner-div{
+      #image:hover{
+        background-color: rgb(135, 162, 235);
+      }
+      .inner-div {
         width: 60%;
-        height: 60px;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
       }
-      .txt_box{
+      .txt_box {
         width: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-        outline: none;
-        border: none;
-        font-size: medium;
-        border-radius: 8px;
         padding: 10px;
         margin: 10px;
-        background-color: rgba(138, 138, 138, 0.041);
+        border-radius: 8px;
         border: white 2px solid;
-        backdrop-filter: blur(10px);        
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.418);
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
       }
-      .label-txt{
+      .txt_box:focus, .txt_box:hover {
+        border: rgb(135, 162, 235) 2px solid;
+        background-color: rgba(255, 255, 255, 0.726);
+      }
+      .label-txt {
         width: 30%;
         display: flex;
         justify-content: flex-end;
-      }
-      .txt_box:focus, .txt_box:hover{
-        border: rgb(135, 162, 235) 2px solid;
-        background-color: rgba(255, 255, 255, 0.726);
       }
       #submit_btn {
         width: 90px;
@@ -109,35 +100,29 @@
         border-radius: 25px;
         cursor: pointer;
       }
-      #submit_btn:hover{
+      #submit_btn:hover {
         box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
         background-color: rgba(24, 134, 14, 0.904);
         transition: 500ms;
       }
-      #image:hover {
-        background-color: rgb(135, 162, 235);
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-      }
-      #search_page_div{
-        position: -webkit-sticky;
-        position: sticky;
-        top: 550px;
-        left: 1270px;
+      #search_page_div {
+        position: fixed;
+        bottom: 20px;
+        right: 20px; 
         background-color: rgb(68, 102, 255);
         width: 50px;
         height: 50px;
         border-radius: 50%;
         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        z-index: 999;
       }
-      #search_page_div a{
-        font-size: 13px;
-        font-weight: 300;
-        text-decoration: none;
-        color: black;
+      #search_page_div a img {
+        width: 30px;
+        padding: 10px;
       }
-      #search_page_div:hover{
+      #search_page_div:hover {
         background-color: rgb(29, 29, 146);
-        box-shadow: 0px 0px 16px 4px rgba(38,38,255,3);
+        box-shadow: 0px 0px 16px 4px rgba(38, 38, 255, 3);
         transition: 0.3s;
       }
       .message-box {
@@ -164,8 +149,10 @@
       <div id="header">
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
       </div>
-      <div id="search_page_div" >
-        <a href="{% url 'search_view' %}" > <img id="search_logo" src="{% static 'images/search_icon.png' %}" alt="search icon" style="width: 30px; padding: 10px;" > </a>
+      <div id="search_page_div">
+        <a href="{% url 'search_view' %}">
+          <img src="{% static 'images/search_icon.png' %}" alt="search icon" />
+        </a>
       </div>
       <div id="small-container">
         <form action="." method="post" enctype="multipart/form-data">
@@ -181,29 +168,34 @@
               {% endfor %}
             {% endif %}
           </div>
+
+          <div id="upload-page-div">
+            <a href="{% url 'upload_year' %}" >Upload PDF</a>
+          </div>
+
           <label id="Upload_txt">Upload Journal Image</label><br />
           <input type="file" id="image" name="image" accept="image/*" required/><br />
           <div class="inner-div">
-            <label class="label-txt" id="Title_txt">Journal name  :</label>
-            <input type="text" id="title" class="txt_box" name = "title" placeholder="Enter the journal title" required/><br/>
+            <label class="label-txt" for="title">Journal name:</label>
+            <input type="text" id="title" class="txt_box" name="title" placeholder="Enter the journal title" required/>
           </div>
           <div class="inner-div">
-            <label class="label-txt" id="Journal_txt">Journal No  :</label>
-            <input type="text" id="jn" class="txt_box" name="jn" placeholder="Enter the journal number" required/><br/>
+            <label class="label-txt" for="jn">Journal No:</label>
+            <input type="text" id="jn" class="txt_box" name="jn" placeholder="Enter the journal number" required/>
           </div>
           <div class="inner-div">
-            <label class="label-txt" id="Volume_txt">Volume No  :</label>
-            <input type="text" id="vn" class="txt_box" name="vn" placeholder="Enter the volume number" required/><br/>
+            <label class="label-txt" for="vn">Volume No:</label>
+            <input type="text" id="vn" class="txt_box" name="vn" placeholder="Enter the volume number" required/>
           </div>
           <div class="inner-div">
-            <label class="label-txt" id="Issue_txt">Issue No  :</label>
-            <input type="text" id="sn" class="txt_box" name="sn" placeholder="Enter the Issue number" required/><br/>
+            <label class="label-txt" for="sn">Issue No:</label>
+            <input type="text" id="sn" class="txt_box" name="sn" placeholder="Enter the Issue number" required/>
           </div>
           <div class="inner-div">
-            <label class="label-txt" id="Monthyear_txt">Month/Year  :</label>
-            <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/><br/>
+            <label class="label-txt" for="my">Month/Year:</label>
+            <input type="text" id="my" class="txt_box" name="my" placeholder="Enter the Month/Year published" required/>
           </div>
-          <button id="submit_btn" type="submit" >Upload</button>
+          <button id="submit_btn" type="submit">Upload</button>
         </form>
       </div>
     </div>
