@@ -68,6 +68,9 @@ def remove_stop_words(text):
     return ' '.join(filtered_words)
 
 def imageUpload(request):
+
+    global count
+
     if request.method == 'POST':
         title=request.POST.get('title')
         image=request.FILES.get('image')
@@ -102,12 +105,24 @@ def imageUpload(request):
 
 def search_view(request):
     query = request.GET.get('q','')
+    show = request.GET.get('pdfs','')
     keyword = query
+    years = None
+
     if query:
         matches = datab.objects.filter(content__icontains=query)
     else:
         matches = None
-    return render(request, 'search.html',{'results': matches, 'query': query})
+
+    if show:
+        all_records = datab2.objects.order_by('-year')
+        seen_years = set()
+        years = []
+        for record in all_records:
+            if record.year not in seen_years:
+                years.append(record)
+                seen_years.add(record.year)
+    return render(request, 'search.html',{'results': matches,'query':query, 'years':years})
 
 
 def image_detail(request, id):
@@ -121,21 +136,23 @@ def image_detail(request, id):
     relative_path = highlight_path.relative_to(settings.MEDIA_ROOT)
     highlighted_image_url = f"{settings.MEDIA_URL}{relative_path}"
 
-    return render(request, 'image_detail.html', {'highlighted_image_url': highlighted_image_url, 'image' : image})
+    return render(request, 'image_detail.html',{'highlighted_image_url': highlighted_image_url, 'image' : image})
 
 
 def year_fun(request):
-    year = request.POST.get('year')
-    pdf = request.FILES.get('pdf')
-    if year and pdf:
-        try:
-            doc2 = datab2.objects.create(year=year,pdf=pdf)
-            doc2.save()
-            messages.success(request,"Uploaded successfully")    
-        except Exception as e:
-            messages.error(request,f"Not uploaded{e}")
+    if request.method == 'POST':
+        year = request.POST.get('year')
+        pdf = request.FILES.get('pdf')
+        if year and pdf:
+            try:
+                doc2 = datab2.objects.create(year=year,pdf=pdf)
+                doc2.save()
+                messages.success(request,"Uploaded successfully")    
+            except Exception as e:
+                messages.error(request,f"Not uploaded{e}")
             
-    else:
-        messages.error(request,"File not found")
+        else:
+            messages.error(request,"File not found")
 
     return render(request,'upload_year.html')
+

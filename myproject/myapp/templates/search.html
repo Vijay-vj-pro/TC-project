@@ -242,16 +242,22 @@
     <div id="header">
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
     </div>
+
+    <form method="get" action="{% url 'search_view' %}">
+      <button id="pdfs" name="pdfs" type="submit" value="1">Journal List</button>
+      {% if years %}
+      <ul>
+        {% for year in years %}
+            <li>
+              <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
+            </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+  </form>
+
     <div id="small-container">
     <form method="get" action="{% url 'search_view' %}">
-        <select name="year" id="journal-list-page">
-          <option selected disabled >Journal list PDF</option>
-          <option class="year-option" value="year1" >2021</option>
-          <option class="year-option" value="year2" >2022</option>
-          <option class="year-option" value="year3" >2023</option>
-          <option class="year-option" value="year4" >2024</option>
-          <option class="year-option" value="year5" >2025</option>
-        </select>
         <h1 id="heading" >Journal search portal</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
         <button id="search-btn" type="submit">Search</button>
