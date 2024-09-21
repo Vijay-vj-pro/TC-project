@@ -10,11 +10,12 @@ from django.conf import settings
 from pathlib import Path
 import os
 
+
 #pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 176\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 
 def highlight_text_in_image(image_path, keyword, output_path):
-    color = (0, 0, 255)  
+    color = (0,0,255)  
     padding = 3  
 
     img = cv2.imread(image_path)
