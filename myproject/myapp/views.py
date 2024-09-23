@@ -61,7 +61,7 @@ STOP_WORDS = set([
     "once", "here", "there", "when", "where", "why", "how", "all", "any", 
     "both", "each", "few", "more", "most", "other", "some", "such", "no", 
     "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", 
-    "t", "can", "will", "just", "don", "should","now"
+    "t", "can", "will", "just","don","should","now"
 ])
 
 def remove_stop_words(text):
