@@ -225,23 +225,6 @@
     <div id="header">
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
     </div>
-<<<<<<< HEAD
-
-    <form method="get" action="{% url 'search_view' %}">
-      <button id="pdfs" name="pdfs" type="submit" value="1">Journal List</button>
-      {% if years %}
-      <ul>
-        {% for year in years %}
-            <li>
-              <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
-            </li>
-        {% endfor %}
-      </ul>
-      {% endif %}     
-  </form>
-
-=======
->>>>>>> 15c0a743b973562d103402e45084176e93434da5
     <div id="small-container">
       <div id="year-button-div">
         <form method="get" action="{% url 'search_view' %}">
