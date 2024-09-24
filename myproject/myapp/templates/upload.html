@@ -61,6 +61,7 @@
         padding: 10px;
         cursor: pointer;
         border-radius: 10px;
+        transition: 500ms;
       }
       #image:hover{
         background-color: rgb(135, 162, 235);
@@ -142,6 +143,48 @@
         color: #69131c;
         border: 1px solid #e68d96;
       }
+      #count-box{
+        width: fit-content;
+        height: 50px;
+        padding: 5px;
+        margin: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        backdrop-filter: blur(15px);
+        border: 1px rgba(255, 255, 255, 0.342) solid;
+        border-radius: 8px;
+      }
+      #count-h2{
+        flex-wrap: wrap;
+        width: 100%;
+        text-align: center;
+      }
+      #uploadyear-page-div{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      #uploadyear-page-div a{
+        width: fit-content;
+        background-color: rgb(28, 28, 158);
+        color: white;
+        border: none;
+        padding: 5px 15px 5px 15px;
+        text-decoration: none;
+        margin: 10px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: medium;
+        text-align: center;
+      }
+      #uploadyear-page-div a:hover{
+        box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
+        background-color: rgba(24, 134, 14, 0.904);
+        transition: 500ms;
+      }
     </style>
   </head>
   <body>
@@ -154,7 +197,9 @@
           <img src="{% static 'images/search_icon.png' %}" alt="search icon" />
         </a>
       </div>
-      <h2>|  {{ count }}  |</h2>
+      <div id="count-box">
+        <h2 id="count-h2">{{ count }}</h2>
+      </div>
       <div id="small-container">
         <form action="." method="post" enctype="multipart/form-data">
           {% csrf_token %}
@@ -170,7 +215,7 @@
             {% endif %}
           </div>
 
-          <div id="upload-page-div">
+          <div id="uploadyear-page-div">
             <a href="{% url 'upload_year' %}" >Upload PDF</a>
             <a href="{% url 'admin:index' %}">Database</a>
           </div>
