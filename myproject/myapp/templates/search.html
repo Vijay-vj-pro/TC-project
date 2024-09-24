@@ -228,20 +228,20 @@
     <div id="small-container">
       <div id="year-button-div">
         <form method="get" action="{% url 'search_view' %}">
-          <select id="pdfs" name="pdfs" type="submit" value="1">
-            <option selected disabled> Select the year </option>
+          <button id="pdfs" name="pdfs" type="submit" value="1">Journal List</button>
+            <ul>
               {% if years %}
                 {% for year in years %}
-                  <option>
+                  <li>
                     <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
-                  </option>
+                  </li>
                 {% endfor %}
               {% endif %}
-          </select>
+            </ul>
         </form>
       </div>
     <form method="get" action="{% url 'search_view' %}">
-        <h1 id="heading" >Journal search portal</h1>
+        <h1 id="heading" >TC Arts Bibliography</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
         <button id="search-btn" type="submit">Search</button>
         <div id="results" >

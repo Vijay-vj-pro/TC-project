@@ -77,6 +77,14 @@
         background-color: rgba(255, 255, 255, 0.418);
         box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
       }
+      
+      .message-box {
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+      }
       #pdf:focus, #pdf:hover {
         border: rgb(135, 162, 235) 2px solid;
         background-color: rgba(255, 255, 255, 0.726);
@@ -112,6 +120,16 @@
         background-color: rgba(24, 134, 14, 0.904);
         transition: 500ms;
       }
+      .success-message {
+        background-color: #aee9bc;
+        color: #07571a;
+        border: 1px solid #93eba7;
+      }
+      .error-message {
+        background-color: #e7a7ac;
+        color: #69131c;
+        border: 1px solid #e68d96;
+      }
     </style>
 </head>
 <body>
@@ -120,7 +138,7 @@
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
       </div>
       <div id="small-container">
-      <h3>Total visters : {{counts}}</h3>
+      <h3>Upload pdfs</h3>
       <form id="small-container-form" action ="." method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="inner-div">
@@ -132,15 +150,17 @@
             <input type="file" id="pdf" name="pdf" accept=".pdf" required/><br/>
           </div>
           <button id="submit_btn" type="submit" >Upload</button>
-          {% if messages %}
-            {% for message in messages %} 
-              {% if message.tags == 'success' %}
-                {{ message }}
-              {% elif message.tags == 'error' %}
-                {{ message }}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
+          <div id="error-block">
+            {% if messages %}
+              {% for message in messages %}
+                {% if message.tags == 'success' %}
+                  <div class="message-box success-message">{{ message }}</div>
+                {% elif message.tags == 'error' %}
+                  <div class="message-box error-message">{{ message }}</div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          </div>
       </form>
       </div>
     </div>
