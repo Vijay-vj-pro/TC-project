@@ -1,3 +1,4 @@
+{% load static%}
 <!DOCTYPE html>
 <html>
 
@@ -22,13 +23,16 @@
             padding: 40px;
             border-radius: 20px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            background-color: rgb(255, 255, 255);
+            background-color: rgba(255, 255, 255);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
         #container {
-          background-color: #cce0ff;
+          background-image: url("{% static 'images/bg.jpg' %}");
+          background-repeat: no-repeat;
+          background-position:center;
+          background-size: cover;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -38,33 +42,14 @@
           width: 100%;
           display: flex;
           flex-direction: row;
-          justify-content: space-evenly;
+          justify-content: center;
           align-items: flex-start;
-        }
-        #header {
-            width: 100%;
-            background-color: dodgerblue;
-            align-items: center;
-            justify-content: space-between;
-            display: flex;
-            flex-direction: row;
-            color: white;
-            margin-bottom: 40px;
-            box-shadow: rgba(0, 0, 0, 0.5) 0px 2px 4px 0px;
-        }
-
-        #img-header {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 30px;
-        }
-        #img-header h1{
-          font-weight: 300  ;
         }
         #button-header{
             padding-right: 50px;
+            position: fixed;
+            top: 50px;
+            right: 10px;
         }
         #back-button {
             height: 10px;
@@ -81,13 +66,21 @@
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
         #back-button:hover{
-          box-shadow: rgba(14, 30, 37, 0.4) 0px 2px 4px 0px, rgba(14, 30, 37, 0.4) 0px 2px 16px 0px;
-            background-color: rgba(3, 5, 136, 0.993);
+          box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
+          background-color: rgba(24, 134, 14, 0.904);
+          transition: 500ms;
         }
         .journal-details{
           margin: 10px;
           font-size: large;
           font-weight: 200;
+        }
+        .image-container a{
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          padding: 0;
+          margin: 0;
         }
 
         /* Mobile devices (max-width: 600px) */
@@ -125,24 +118,20 @@
 
 <body>
     <div id="container">
-        <div id="header">
-            <div id="img-header">
-                <h1>Journal title: {{image.title}}</h1>
-            </div>
             <div id="button-header">
                 <a id="back-button" href="{% url 'search_view' %}">Back</a>
             </div>
-        </div>
         <div id="small-container" >
         <div class="image-container">
             <a href="{{ highlighted_image_url }}" target="_blank"><img src="{{ highlighted_image_url }}" alt="{{image.title}}" /></a>
         </div>
         <div class="image-container">
-            <h5>Journal details</h5>
-            <h5 class="journal-details" >Journal number : {{image.jn}}</h5>
-            <h5 class="journal-details" >Volume number : {{image.vn}}</h5>
-            <h5 class="journal-details" >Issue number : {{image.sn}}</h5>
-            <h5 class="journal-details" >Month / year : {{image.my}}</h5>  
+            <h3>Journal details</h3>
+            <h5 class="journal-details" >Journal Name: {{image.title}}</h5>
+            <h5 class="journal-details" >Journal Number : {{image.jn}}</h5>
+            <h5 class="journal-details" >Volume Number : {{image.vn}}</h5>
+            <h5 class="journal-details" >Issue Number : {{image.sn}}</h5>
+            <h5 class="journal-details" >Month / Year : {{image.my}}</h5>  
         </div>
         </div>
     </div>
