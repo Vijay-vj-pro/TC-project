@@ -79,7 +79,7 @@ def login_fun(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('upload') 
+            return redirect('imageUpload') 
         else:
             messages.error(request,"Invalid Username or Password")
     return render(request,"login.html")
