@@ -181,3 +181,5 @@ def year_fun(request):
 
     return render(request,'upload_year.html')
 
+def login_fun(request):
+    return render(request,"login.html")

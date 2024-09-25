@@ -103,10 +103,18 @@
       }
       #results{
         width: 100%;
-        display:flex;
+        max-height: 350px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 5px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        display: flex;
+        border: 1px rgba(255, 255, 255, 0.459) solid;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.205);
       }
       #results h2{
         font-weight: 400;
@@ -142,7 +150,6 @@
         text-shadow: 2px 2px 2px rgb(0, 0, 0);
       }
       #result-a:hover{
-        width: 103%;
         transition: 0.5s;
         font-size: 24pt;
         text-decoration: underline;
@@ -164,6 +171,15 @@
         outline: none;
         border: 1px rgba(255, 255, 255, 0.452) solid;
         border-radius: 10px;
+      }
+      #pdfs-ul{
+        background-color: transparent;
+        width: 90%;
+        height: 80px;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: thin;
       }
       #pdfs:hover{
         cursor: pointer;
@@ -204,8 +220,64 @@
         justify-content: center;
         align-items: center;
         font-size: 10pt;
-        font-weight: 300px;
+        font-weight: 600;
       }
+      iframe{
+        display: none;
+      }
+      .loader-container {
+          display: flex;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 0.5 );
+          backdrop-filter: blur(10px);
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          z-index: 1000;
+        }
+
+        .bouncing-dots {
+          display: flex;
+          justify-content: space-between;
+          width: 60px;
+        }
+
+      .dot {
+          width: 15px;
+          height: 15px;
+          background-color: #3586ff;
+          border-radius: 50%;
+          animation: bounce 1.5s infinite;
+      }
+
+      .dot:nth-child(1) {
+          animation-delay: 0s;
+      }
+
+      .dot:nth-child(2) {
+          animation-delay: 0.3s;
+      }
+
+      .dot:nth-child(3) {
+          animation-delay: 0.6s;
+      }
+
+      @keyframes bounce {
+          0%, 100% {
+              transform: translateY(0);
+          }
+          50% {
+              transform: translateY(-20px);
+          }
+      }
+      body.loading {
+          overflow: hidden;
+      }
+
 
       /* Medium Devices (Tablets, 768px and up) */
 @media only screen and (max-width: 1024px) {
@@ -267,50 +339,60 @@
     padding: 10px;
     height: auto;
     margin-bottom: 20px;
+    align-items: flex-start;
   }
   form {
     width: 100%;
   }
   #heading {
     font-size: 15px;
-    margin: 10px;
   }
   #search-box {
     width: 100%;
-    height: 15px;
+    height: 10px;
     font-size: 12px;
     padding: 10px;
   }
   #search-btn {
     width: 50%;
-    font-size: 10px;
-    padding: 10px;
-    margin-top: 15px;
+    height: 20px;
+    padding: 0;
+    font-size: 7pt;
+    margin-top: 10px;
   }
   #results{
     width: 100%;
+    height: 200px;
   }
   #results h2 {
     font-size: 15px;
+  }
+  #results-txt{
+    font-size: 10px;
+    padding: 0;
+    height: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
   #results p {
     font-size: 14px;
   }
   #result-list{
     margin: 0;
+    height: 35px;
   }
   #result-list hr{
     width: 100%;
   }
   #result-a {
-    font-size: 12pt;
+    font-size: 10pt;
   }
   #result-a:hover{
-    font-size: 12pt;
+    font-size: 10pt;
   }
   #year-button-div{
     width: 100px;
-    height: 40px;
+    height: 100px;
     right: 0;
     top: 0;
     padding: 0;
@@ -322,6 +404,9 @@
     width: 100%;
     height: 40px;
     padding: 0;
+    font-size: 10pt;
+  }
+  #pdfs-ul li a{
     font-size: 10pt;
   }
   #footer {
@@ -337,6 +422,13 @@
     </style>
 </head>
 <body>
+  <div class="loader-container">
+    <div class="bouncing-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+  </div>
     <div id="container">
     <div id="header">
         <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
@@ -345,25 +437,25 @@
       <div id="year-button-div">
         <form method="get" action="{% url 'search_view' %}">
           <button id="pdfs" name="pdfs" type="submit" value="1">Journal List</button>
-            <ul>
               {% if years %}
+              <ul id="pdfs-ul">
                 {% for year in years %}
                   <li>
                     <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
                   </li>
                 {% endfor %}
+              </ul>
               {% endif %}
-            </ul>
         </form>
       </div>
     <form method="get" action="{% url 'search_view' %}">
         <h1 id="heading" >TC Journal Biblio</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
-        <button id="search-btn" type="submit">Search</button>
-        <div id="results" >
+        <button id="search-btn" type="submit" >Search</button>
+        <h2 id="results-txt">Results</h2>
             {% if results is not None %}
+            <div id="results" >
                 {% if results %}
-                        <h2>Results</h2>
                         {% for result in results %}
                             <div id="result-list" >
                               <hr>
@@ -373,19 +465,42 @@
                             </div>
                         {% endfor %}
                 {% else %}
-                    <h2>Results</h2>
                     <p>No results found.</p>
                 {% endif %}
+              </div>
             {% endif %}
-        </div>
     </form>
     </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div id="footer">
+<<<<<<< HEAD
       <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdulkasif R A |</p>
       <p>| Mentored by Dr. R. Moorthy <I>Librarian</I> and Dr. G. Rakesh <I>Head CS 'A' sec</I></p>
+=======
+      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdulkasif R A || Mentored by Dr R. Moorthy <small>Librarian</small> and Dr. G. Rakesh <small>Head of Dept CS</small></p>
+>>>>>>> e5ce19107dca7f63eefd7f044df55bab6e36dde5
     </div>
     </div>
-    
+    <script>
+      window.addEventListener("load", function() {
+  // Hide the loader container
+  var loader = document.querySelector(".loader-container");
+  loader.style.display = "none";
+
+  // Remove 'loading' class to enable scrolling
+  document.body.classList.remove("loading");
+
+  // Show the content (assuming there is content hidden initially)
+  var content = document.getElementById("content");
+  if(content) {
+    content.style.display = "block";
+  }
+});
+
+// Add 'loading' class to body to prevent scrolling when the page loads
+document.body.classList.add("loading");
+
+    </script>
 
 </body>
 </html>
