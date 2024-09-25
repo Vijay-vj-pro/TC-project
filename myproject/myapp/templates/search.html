@@ -103,10 +103,18 @@
       }
       #results{
         width: 100%;
-        display:flex;
+        max-height: 350px;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 5px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: thin;
+        display: flex;
+        border: 1px rgba(255, 255, 255, 0.459) solid;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.205);
       }
       #results h2{
         font-weight: 400;
@@ -164,6 +172,15 @@
         outline: none;
         border: 1px rgba(255, 255, 255, 0.452) solid;
         border-radius: 10px;
+      }
+      #pdfs-ul{
+        background-color: transparent;
+        width: 90%;
+        height: 80px;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width: thin;
       }
       #pdfs:hover{
         cursor: pointer;
@@ -406,25 +423,25 @@
       <div id="year-button-div">
         <form method="get" action="{% url 'search_view' %}">
           <button id="pdfs" name="pdfs" type="submit" value="1">Journal List</button>
-            <ul>
               {% if years %}
+              <ul id="pdfs-ul">
                 {% for year in years %}
                   <li>
                     <a href="{{ year.pdf.url }}" target="_blank">{{year.year}}</a>
                   </li>
                 {% endfor %}
+              </ul>
               {% endif %}
-            </ul>
         </form>
       </div>
     <form method="get" action="{% url 'search_view' %}">
         <h1 id="heading" >TC Arts Bibliography</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
-        <button id="search-btn" type="submit">Search</button>
-        <div id="results" >
+        <button id="search-btn" type="submit" onload="showResults()">Search</button>
+        <h2>Results</h2>
             {% if results is not None %}
+            <div id="results" >
                 {% if results %}
-                        <h2>Results</h2>
                         {% for result in results %}
                             <div id="result-list" >
                               <hr>
@@ -434,11 +451,10 @@
                             </div>
                         {% endfor %}
                 {% else %}
-                    <h2>Results</h2>
                     <p>No results found.</p>
                 {% endif %}
+              </div>
             {% endif %}
-        </div>
     </form>
     </div>
     <div id="footer">
