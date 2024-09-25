@@ -1,5 +1,7 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from .models import datab , datab2
+from django.contrib.auth import authenticate, login 
+from django.contrib.auth.decorators import login_required
 from PIL import Image
 from django.db.models import Q
 import pytesseract
@@ -68,6 +70,21 @@ def remove_stop_words(text):
     words=text.split()
     filtered_words =[word for word in words if word.lower() not in STOP_WORDS and word.isalnum()]
     return ' '.join(filtered_words)
+
+
+def login_fun(request):
+    if request.method == 'POST':
+        username = request.POST.get('un')
+        password = request.POST.get('psw')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('upload') 
+        else:
+            messages.error(request,"Invalid Username or Password")
+    return render(request,"login.html")
+
+@login_required(login_url = 'login')
 
 def imageUpload(request):
     if request.method == 'POST':
@@ -181,5 +198,3 @@ def year_fun(request):
 
     return render(request,'upload_year.html')
 
-def login_fun(request):
-    return render(request,"login.html")

@@ -18,9 +18,12 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('imageUpload/',views.imageUpload,name='imageUpload'),
+    path('login/',views.login_fun,name='login'),
     path('',include('myapp.urls')),
 ]
 

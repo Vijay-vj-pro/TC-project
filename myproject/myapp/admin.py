@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.contrib.auth.models import User
 from .models import datab , datab2
 
 @admin.register(datab)
@@ -12,3 +13,5 @@ class databAdmin(admin.ModelAdmin):
 class datab2Admin(admin.ModelAdmin):
     list_display = ['year','pdf']
     search_fields = ['year']
+    
+

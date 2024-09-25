@@ -19,3 +19,4 @@ class datab2(models.Model):
     
     def __str__(self):
        return f"{self.year} - {self.pdf.name}"  
+
