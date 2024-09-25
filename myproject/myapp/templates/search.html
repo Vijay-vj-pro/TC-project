@@ -150,7 +150,6 @@
         text-shadow: 2px 2px 2px rgb(0, 0, 0);
       }
       #result-a:hover{
-        width: 103%;
         transition: 0.5s;
         font-size: 24pt;
         text-decoration: underline;
@@ -222,6 +221,9 @@
         align-items: center;
         font-size: 10pt;
         font-weight: 600;
+      }
+      iframe{
+        display: none;
       }
       .loader-container {
           display: flex;
@@ -337,50 +339,60 @@
     padding: 10px;
     height: auto;
     margin-bottom: 20px;
+    align-items: flex-start;
   }
   form {
     width: 100%;
   }
   #heading {
     font-size: 15px;
-    margin: 10px;
   }
   #search-box {
     width: 100%;
-    height: 15px;
+    height: 10px;
     font-size: 12px;
     padding: 10px;
   }
   #search-btn {
     width: 50%;
-    font-size: 10px;
-    padding: 10px;
-    margin-top: 15px;
+    height: 20px;
+    padding: 0;
+    font-size: 7pt;
+    margin-top: 10px;
   }
   #results{
     width: 100%;
+    height: 200px;
   }
   #results h2 {
     font-size: 15px;
+  }
+  #results-txt{
+    font-size: 10px;
+    padding: 0;
+    height: 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
   #results p {
     font-size: 14px;
   }
   #result-list{
     margin: 0;
+    height: 35px;
   }
   #result-list hr{
     width: 100%;
   }
   #result-a {
-    font-size: 12pt;
+    font-size: 10pt;
   }
   #result-a:hover{
-    font-size: 12pt;
+    font-size: 10pt;
   }
   #year-button-div{
     width: 100px;
-    height: 40px;
+    height: 100px;
     right: 0;
     top: 0;
     padding: 0;
@@ -392,6 +404,9 @@
     width: 100%;
     height: 40px;
     padding: 0;
+    font-size: 10pt;
+  }
+  #pdfs-ul li a{
     font-size: 10pt;
   }
   #footer {
@@ -436,8 +451,8 @@
     <form method="get" action="{% url 'search_view' %}">
         <h1 id="heading" >TC Arts Bibliography</h1>
         <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
-        <button id="search-btn" type="submit" onload="showResults()">Search</button>
-        <h2>Results</h2>
+        <button id="search-btn" type="submit" >Search</button>
+        <h2 id="results-txt">Results</h2>
             {% if results is not None %}
             <div id="results" >
                 {% if results %}
@@ -456,8 +471,9 @@
             {% endif %}
     </form>
     </div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div id="footer">
-      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdulkasif R A || Mentored by Dr R. Moorthy <small>Librarian</small> and Dr. G. Rakesh <small>Head Dept. of CS 'A' sec</small></p>
+      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdulkasif R A || Mentored by Dr R. Moorthy <small>Librarian</small> and Dr. G. Rakesh <small>Head of Dept CS</small></p>
     </div>
     </div>
     <script>
