@@ -15,7 +15,6 @@
             max-width: 700px;
             height: auto;
             display: flex;
-            margin-top: 30px;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
         .image-container {
@@ -109,7 +108,7 @@
       .dot {
           width: 15px;
           height: 15px;
-          background-color: #000000;
+          background-color: #3586ff;
           border-radius: 50%;
           animation: bounce 1.5s infinite;
       }
@@ -138,40 +137,58 @@
           overflow: hidden;
       }
 
-
-        /* Mobile devices (max-width: 600px) */
-  @media only screen and (max-width: 600px) {
-    #header{
-      height: 60px;
+      /* Mobile devices (max-width: 600px) */
+@media only screen and (max-width: 600px) {
+    #small-container {
+        flex-direction: column;
+        align-items: center;
     }
-    #img-header h1{
-      font-size: 15pt;
+    .image-container {
+        padding: 10px;
+        margin: 50px;
+    }
+    .image-container a{
+      margin: 0;
+      padding: 10px;
+      height: 60vh;
+    }
+    .image-container img {
+        max-width: 100%;
+    }
+    #back-button {
+        font-size: 12px;
+        padding: 5px 10px;
+        width: auto;
     }
     #button-header{
-      width: 20%;
+      top: 10px;
+      left: 10px;
     }
-    #back-button{
-      width: 10px;
+    .journal-details {
+        font-size: medium;
     }
-  }
+}
 
-  /* Tablets (max-width: 1024px) */
-  @media only screen and (max-width: 1024px) {
+/* Tablets (max-width: 1024px) */
+@media only screen and (max-width: 1024px) {
+    #small-container {
+        flex-direction: column;
+        align-items: center;
+    }
     .image-container img {
-      max-width: 80%; /* Adjust for tablets */
+        max-width: 80%; /* Adjust for tablets */
     }
+    #back-button {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    .journal-details {
+        font-size: large;
+    }
+}
 
-    #img-header {
-      padding-left: 0;
-    }
-
-    h1 {
-      font-size: 28px;
-    }
-  }
     </style>
 </head>
-
 <body>
   <div class="loader-container">
     <div class="bouncing-dots">
@@ -188,7 +205,7 @@
         <div class="image-container">
             <a href="{{ highlighted_image_url }}" target="_blank"><img src="{{ highlighted_image_url }}" alt="{{image.title}}" /></a>
         </div>
-        <div class="image-container">
+        <div id="details-container" class="image-container">
             <h3>Journal details</h3>
             <h5 class="journal-details" >Journal Name: {{image.title}}</h5>
             <h5 class="journal-details" >Journal Number : {{image.jn}}</h5>
@@ -197,7 +214,7 @@
             <h5 class="journal-details" >Month / Year : {{image.my}}</h5>  
         </div>
         </div>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --> 
     </div>
     <script>
       window.addEventListener("load", function() {
