@@ -13,7 +13,7 @@ from pathlib import Path
 import os
 
 
-#pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 176\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 177\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 
 def highlight_text_in_image(image_path, keyword, output_path):

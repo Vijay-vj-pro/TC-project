@@ -201,7 +201,7 @@
         <h2 id="count-h2">{{ count }}</h2>
       </div>
       <div id="small-container">
-        <form action="." method="post">
+        <form action="." method="post" enctype="multipart/form-data" >
           {% csrf_token %}
           <div id="error-block">
             {% if messages %}
