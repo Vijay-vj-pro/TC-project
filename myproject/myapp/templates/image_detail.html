@@ -3,6 +3,8 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ image.title }}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
     <style>
@@ -64,6 +66,7 @@
             text-decoration: none;
             color: white;
             z-index: 998;
+            cursor: pointer;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
         #back-button:hover{
@@ -75,6 +78,9 @@
           margin: 10px;
           font-size: large;
           font-weight: 200;
+        }
+        #details-container h3{
+            font-size: 25pt;
         }
         .image-container a{
           justify-content: center;
@@ -199,7 +205,7 @@
   </div>
     <div id="container">
             <div id="button-header">
-                <a id="back-button" href="{% url 'search_view' %}">Back</a>
+                <a id="back-button" onclick="window.history.back()">Back</a>
             </div>
         <div id="small-container" >
         <div class="image-container">
@@ -207,11 +213,11 @@
         </div>
         <div id="details-container" class="image-container">
             <h3>Journal details</h3>
-            <h5 class="journal-details" >Journal Name: {{image.title}}</h5>
-            <h5 class="journal-details" >Journal Number : {{image.jn}}</h5>
-            <h5 class="journal-details" >Volume Number : {{image.vn}}</h5>
-            <h5 class="journal-details" >Issue Number : {{image.sn}}</h5>
-            <h5 class="journal-details" >Month / Year : {{image.my}}</h5>  
+            <h5 class="journal-details" ><b>Journal Name:</b> {{image.title}}</h5>
+            <h5 class="journal-details" ><b>Journal Number :</b> {{image.jn}}</h5>
+            <h5 class="journal-details" ><b>Volume Number :</b> {{image.vn}}</h5>
+            <h5 class="journal-details" ><b>Issue Number :</b> {{image.sn}}</h5>
+            <h5 class="journal-details" ><b>Month / Year :</b> {{image.my}}</h5>  
         </div>
         </div>
         <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --> 

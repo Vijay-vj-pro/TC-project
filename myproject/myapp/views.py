@@ -13,7 +13,7 @@ from pathlib import Path
 import os
 
 
-#pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 176\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
+#pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 177\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 
 def highlight_text_in_image(image_path, keyword, output_path):
@@ -79,7 +79,7 @@ def login_fun(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request,user)
-            return redirect('upload') 
+            return redirect('imageUpload') 
         else:
             messages.error(request,"Invalid Username or Password")
     return render(request,"login.html")
