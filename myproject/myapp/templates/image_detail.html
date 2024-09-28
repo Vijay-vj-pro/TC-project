@@ -13,46 +13,53 @@
             font-family: "Poppins", serif;
             background-color: #e6f0ff;
         }
+
         .image-container img {
             max-width: 700px;
             height: auto;
             display: flex;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
+
         .image-container {
             margin: 30px;
             padding: 40px;
             border-radius: 20px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            background-color: rgba(255, 255, 255);
+            background-color: rgba(255, 255, 255, 0.686);
+            backdrop-filter: blur(20px);
             display: flex;
             flex-direction: column;
             align-items: flex-start;
         }
+
         #container {
-          background-image: url("{% static 'images/bg.jpg' %}");
-          background-repeat: no-repeat;
-          background-position:center;
-          background-size: cover;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
+            background-image: url("{% static 'images/bg.jpg' %}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        #small-container{
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: flex-start;
+
+        #small-container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
         }
-        #button-header{
+
+        #button-header {
             padding-right: 50px;
             position: fixed;
             top: 50px;
             right: 10px;
             z-index: 999;
         }
+
         #back-button {
             height: 10px;
             width: 50px;
@@ -69,178 +76,219 @@
             cursor: pointer;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
         }
-        #back-button:hover{
-          box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
-          background-color: rgb(24, 134, 14);
-          transition: 500ms;
+
+        #back-button:hover {
+            box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
+            background-color: rgb(24, 134, 14);
+            transition: 500ms;
         }
-        .journal-details{
-          margin: 10px;
-          font-size: large;
-          font-weight: 200;
+
+        .journal-details {
+            margin: 10px;
+            font-size: large;
+            font-weight: 200;
         }
-        #details-container h3{
+
+        #details-container h3 {
             font-size: 25pt;
         }
-        .image-container a{
-          justify-content: center;
-          align-items: center;
-          display: flex;
-          padding: 0;
-          margin: 0;
+
+        .image-container a {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            padding: 0;
+            margin: 0;
         }
-        
+
         .loader-container {
-          display: flex;
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(255, 255, 255, 0.5 );
-          backdrop-filter: blur(10px);
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          z-index: 1000;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            z-index: 1000;
         }
 
         .bouncing-dots {
-          display: flex;
-          justify-content: space-between;
-          width: 60px;
+            display: flex;
+            justify-content: space-between;
+            width: 60px;
         }
 
-      .dot {
-          width: 15px;
-          height: 15px;
-          background-color: #3586ff;
-          border-radius: 50%;
-          animation: bounce 1.5s infinite;
-      }
+        .dot {
+            width: 15px;
+            height: 15px;
+            background-color: #3586ff;
+            border-radius: 50%;
+            animation: bounce 1.5s infinite;
+        }
 
-      .dot:nth-child(1) {
-          animation-delay: 0s;
-      }
+        .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
 
-      .dot:nth-child(2) {
-          animation-delay: 0.3s;
-      }
+        .dot:nth-child(2) {
+            animation-delay: 0.3s;
+        }
 
-      .dot:nth-child(3) {
-          animation-delay: 0.6s;
-      }
+        .dot:nth-child(3) {
+            animation-delay: 0.6s;
+        }
 
-      @keyframes bounce {
-          0%, 100% {
-              transform: translateY(0);
-          }
-          50% {
-              transform: translateY(-20px);
-          }
-      }
-      body.loading {
-          overflow: hidden;
-      }
+        @keyframes bounce {
 
-      /* Mobile devices (max-width: 600px) */
-@media only screen and (max-width: 600px) {
-    #small-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .image-container {
-        padding: 10px;
-        margin: 50px;
-    }
-    .image-container a{
-      margin: 0;
-      padding: 10px;
-      height: 60vh;
-    }
-    .image-container img {
-        max-width: 100%;
-    }
-    #back-button {
-        font-size: 12px;
-        padding: 5px 10px;
-        width: auto;
-    }
-    #button-header{
-      top: 10px;
-      left: 10px;
-    }
-    .journal-details {
-        font-size: medium;
-    }
-}
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-/* Tablets (max-width: 1024px) */
-@media only screen and (max-width: 1024px) {
-    #small-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .image-container img {
-        max-width: 80%; /* Adjust for tablets */
-    }
-    #back-button {
-        font-size: 14px;
-        padding: 6px 12px;
-    }
-    .journal-details {
-        font-size: large;
-    }
-}
+            50% {
+                transform: translateY(-20px);
+            }
+        }
 
+        body.loading {
+            overflow: hidden;
+        }
+
+
+        /* Tablets (max-width: 1024px) */
+        @media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
+        (min-resolution: 144dpi) {
+            #small-container {
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+            }
+
+            .image-container img {
+                max-width: 80%;
+                /* Adjust for tablets */
+            }
+
+            #back-button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .journal-details {
+                font-size: large;
+            }
+
+            #details-container {
+                padding: 15px;
+            }
+
+            #details-container h3 {
+                font-size: 25px;
+            }
+        }
+
+        /* Mobile devices (max-width: 600px) */
+        @media only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi) {
+            #small-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .image-container {
+                padding: 10px;
+                height: fit-content;
+                margin: 40px;
+            }
+
+            .image-container a {
+                margin: 0;
+                padding: 10px;
+                height: 100%;
+            }
+
+            .image-container img {
+                max-width: 100%;
+            }
+
+            #back-button {
+                font-size: 12px;
+                padding: 5px 10px;
+                width: auto;
+            }
+
+            #button-header {
+                top: 20px;
+                left: 20px;
+            }
+
+            .journal-details {
+                font-size: medium;
+            }
+
+            #details-container {
+                padding: 25px;
+            }
+
+            #details-container h3 {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
+
 <body>
-  <div class="loader-container">
-    <div class="bouncing-dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+    <div class="loader-container">
+        <div class="bouncing-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
     </div>
-  </div>
     <div id="container">
-            <div id="button-header">
-                <a id="back-button" onclick="window.history.back()">Back</a>
+        <div id="button-header">
+            <a id="back-button" onclick="window.history.back()">Back</a>
+        </div>
+        <div id="small-container">
+            <div class="image-container">
+                <a href="{{ highlighted_image_url }}" target="_blank"><img src="{{ highlighted_image_url }}"
+                        alt="{{image.title}}" /></a>
             </div>
-        <div id="small-container" >
-        <div class="image-container">
-            <a href="{{ highlighted_image_url }}" target="_blank"><img src="{{ highlighted_image_url }}" alt="{{image.title}}" /></a>
+            <div id="details-container" class="image-container">
+                <h3>Journal details</h3>
+                <h5 class="journal-details"><b>Journal Name:</b> {{image.title}}</h5>
+                <h5 class="journal-details"><b>Journal Number :</b> {{image.jn}}</h5>
+                <h5 class="journal-details"><b>Volume Number :</b> {{image.vn}}</h5>
+                <h5 class="journal-details"><b>Issue Number :</b> {{image.sn}}</h5>
+                <h5 class="journal-details"><b>Month / Year :</b> {{image.my}}</h5>
+            </div>
         </div>
-        <div id="details-container" class="image-container">
-            <h3>Journal details</h3>
-            <h5 class="journal-details" ><b>Journal Name:</b> {{image.title}}</h5>
-            <h5 class="journal-details" ><b>Journal Number :</b> {{image.jn}}</h5>
-            <h5 class="journal-details" ><b>Volume Number :</b> {{image.vn}}</h5>
-            <h5 class="journal-details" ><b>Issue Number :</b> {{image.sn}}</h5>
-            <h5 class="journal-details" ><b>Month / Year :</b> {{image.my}}</h5>  
-        </div>
-        </div>
-        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> --> 
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/Yf5d_Zx3AaI?si=4dczBd0ju9BG47O-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
     </div>
     <script>
-      window.addEventListener("load", function() {
-  // Hide the loader container
-  var loader = document.querySelector(".loader-container");
-  loader.style.display = "none";
+        window.addEventListener("load", function () {
+            // Hide the loader container
+            var loader = document.querySelector(".loader-container");
+            loader.style.display = "none";
 
-  // Remove 'loading' class to enable scrolling
-  document.body.classList.remove("loading");
+            // Remove 'loading' class to enable scrolling
+            document.body.classList.remove("loading");
 
-  // Show the content (assuming there is content hidden initially)
-  var content = document.getElementById("content");
-  if(content) {
-    content.style.display = "block";
-  }
-});
+            // Show the content (assuming there is content hidden initially)
+            var content = document.getElementById("content");
+            if (content) {
+                content.style.display = "block";
+            }
+        });
 
-// Add 'loading' class to body to prevent scrolling when the page loads
-document.body.classList.add("loading");
+        // Add 'loading' class to body to prevent scrolling when the page loads
+        document.body.classList.add("loading");
 
     </script>
 </body>
+
 </html>
