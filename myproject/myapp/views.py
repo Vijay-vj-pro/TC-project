@@ -16,14 +16,14 @@ import os
 #pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 177\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
 
 
-def highlight_text_in_image(image_path, keyword, output_path):
-    color = (0,0,255)  
-    padding = 3  
 
+def highlight_text_in_image(image_path, keywords, output_path):
+    color = (0, 0, 255)  
+    padding =3  
     img = cv2.imread(image_path)
     
     if img is None:
-        print(f"Error: Could not load image from path '{image_path}'. Please check the file path.")
+        print(f"Error: Could not load image from path'{image_path}'. Please check the file path.")
         return
 
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -34,15 +34,19 @@ def highlight_text_in_image(image_path, keyword, output_path):
     n_boxes = len(d['text'])
     highlighted = False
     
+    keyword_list = keywords.lower().split()
+
     for i in range(n_boxes):
-        if keyword.lower() in d['text'][i].strip().lower(): 
+        word_in_image = d['text'][i].strip().lower()
+    
+        if any(keyword in word_in_image for keyword in keyword_list):
             (x, y, w, h) = (d['left'][i], d['top'][i], d['width'][i], d['height'][i])
             x -= padding
             y -= padding
-            w += 2 * padding
-            h += 2 * padding
-            
-            img = cv2.rectangle(img, (x, y),(x + w, y + h),color,2) 
+            w += 2*padding
+            h += 2*padding
+
+            img = cv2.rectangle(img, (x, y), (x + w, y + h),color,2)
             highlighted = True
 
     cv2.imwrite(output_path, img)
