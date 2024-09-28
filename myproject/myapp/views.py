@@ -65,6 +65,8 @@ STOP_WORDS = set([
     "nor", "not", "only", "own", "same", "so", "than", "too", "very", "s", 
     "t", "can", "will", "just","don","should","now"
 ])
+ALPHABETS = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
 
 def remove_stop_words(text):
     words=text.split()
@@ -133,11 +135,12 @@ def search_view(request):
     show = request.GET.get('pdfs','')
     keyword = query
     years = None
+    matches = []
 
-    if query:
+    if query and query not in STOP_WORDS and query.lower() not in ALPHABETS:
         matches = datab.objects.filter(content__icontains=query)
     else:
-        matches = None
+        matches = []
 
     if show:
         all_records = datab2.objects.order_by('-year')
