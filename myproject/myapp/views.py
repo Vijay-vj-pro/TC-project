@@ -197,4 +197,3 @@ def year_fun(request):
             messages.error(request,"File not found")
 
     return render(request,'upload_year.html')
-
