@@ -6,7 +6,7 @@ from PIL import Image
 from django.db.models import Q
 import pytesseract
 from django.contrib import messages
-import cv2 # type: ignore 
+import cv2
 from pytesseract import Output
 from django.conf import settings
 from pathlib import Path
@@ -14,8 +14,6 @@ import os
 
 
 #pytesseract.pytesseract.tesseract_cmd = r"C:\Users\RAD 177\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
-
-
 
 def highlight_text_in_image(image_path, keywords, output_path):
     color = (0, 0, 255)  

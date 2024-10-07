@@ -428,6 +428,7 @@
       #small-container {
         width: 90%;
         padding: 10px;
+        padding-top: 120px;
         height: 500px;
         margin-bottom: 20px;
         align-items: flex-start;
@@ -443,31 +444,28 @@
         flex-direction: column;
         justify-content: flex-start;
       }
-      #heading {
-        font-size: 15px;
-      }
       #search-bar-div{
         width: 100%;
-        height: 30px;
+        height: 35px;
       }
       #search-box {
         width: 100%;
-        height: 25px;
-        font-size: 10px;
+        height: 35px;
+        font-size: 15px;
         padding: 10px;
         padding-right: 25px
       }
 
       #search-btn {
-        width: 30%;
-        height: 25px;
+        width: 35%;
+        height: 30px;
         padding: 0;
-        font-size: 7pt;
-        margin-top: 10px;
+        font-size: 10pt;
+        margin-top: 25px;
       }
 
       #clear-btn {
-        right: 5px;
+        right: 0px;
       }
 
       #clear-btn img {
@@ -606,8 +604,9 @@
           </button>
         </div>
         <button id="search-btn" type="submit">Search</button>
-        <h2 id="results-txt">Results</h2>
+
         {% if query %}
+        <h2 id="results-txt">Results</h2>
         {% if results is not None %}
         <div id="results">
           {% if results %}
@@ -628,7 +627,7 @@
       </form>
     </div>
     <div id="footer">
-      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdulkasif R A || Mentored
+      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdul Kasif R A || Mentored
         by Dr R. Moorthy <small>Librarian</small> and Dr. G. Rakesh <small>Head of Dept CS</small></p>
     </div>
   </div>
