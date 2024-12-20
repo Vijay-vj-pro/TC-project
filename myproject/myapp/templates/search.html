@@ -5,38 +5,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400..800&family=DM+Serif+Text:ital@0;1&family=Fredericka+the+Great&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <title>Journal Search Portal</title>
   <style>
     * {
       padding: 0;
       margin: 0;
     }
-
     body {
       margin: 0;
       padding: 0;
-      font-family: "Poppins", serif;
+      font-family: "Raleway", sans-serif;
       font-size: larger;
-      background-image: url("{% static 'images/bg.jpg' %}");
+      background-image: url("{% static 'images/bg8.jpg' %}");
       background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      background-position: center top;
+      background-size:cover;
     }
-
     #header {
       width: 100%;
       display: flex;
     }
-
     #header_img {
       width: 100%;
-      margin-bottom: 5%;
+      margin-bottom: 30px;
     }
-
     #container {
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
       padding: 0;
       justify-content: space-between;
@@ -44,207 +42,67 @@
       display: flex;
       flex-direction: column;
     }
-
     #small-container {
-      background-color: rgba(255, 255, 255, 0.144);
-      backdrop-filter: blur(35px);
+      background-color: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
       width: 80%;
-      height: 100%;
+      height: auto;
       display: flex;
-      flex-grow: 1;
-      position: relative;
-      border: 1px rgba(255, 255, 255, 0.486) solid;
+      flex-direction: column;
+      border: 1px rgba(255, 255, 255, 0.3) solid;
       border-radius: 15px;
       box-shadow: rgba(0, 0, 0, 0.5) 0px 7px 29px 0px;
       justify-content: center;
       align-items: center;
-      padding: 20px 0px;
+      padding: 20px;
     }
-
-    form {
-      width: 90%;
-      border-radius: 10px;
-      display: flex;
-      color: black;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 40px;
-    }
-
-    #heading {
-      font-size: 30px;
-      margin: 20px;
-      display: flex;
-      font-weight: 100;
-      color: rgb(0, 0, 0);
-    }
-
-    #search-bar-div {
-      width: 60%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-
-    #search-box {
-      width: 100%;
-      border: none;
-      outline: none;
-      border-radius: 30px;
-      background-color: rgba(255, 255, 255, 0.600);
-      font-size: 12pt;
-      font-family: "Poppins", serif;
-      padding: 10px 60px 10px 15px;
-      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-
-    #search-box:hover,
-    #search-box:focus {
-      box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 6px, rgba(0, 0, 0, 0.5) 0px 9px 15px -5px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-
-    #clear-btn {
-      position: absolute;
-      right: -15px;
-      top: 53%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      font-size: 18px;
-      color: #888;
-      cursor: pointer;
-      display: none;
-    }
-
-    #clear-btn img {
-      width: 20px;
-      cursor: pointer;
-    }
-
-    #search-btn {
-      font-family: "Poppins", serif;
-      width: 90px;
-      background-color: rgba(30, 30, 253, 0.925);
-      color: white;
-      border: none;
-      padding: 8px;
-      margin: 30px;
-      border-radius: 35px;
-      cursor: pointer;
-      font-size: 15px;
-      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    }
-
-    #search-btn:hover {
-      box-shadow: 0px 0px 16px 2px rgb(35, 78, 10);
-      background-color: rgba(24, 134, 14, 0.904);
-      transition: 500ms;
-    }
-
-    #results {
+    #year-button-div{
       width: 100%;
       height: fit-content;
-      max-height: 300px;
-      display: block;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 5px 10px 5px;
-      overflow-x: hidden;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      border: 10px transparent solid;
-      outline: 1px rgba(255, 255, 255, 0.74) solid;
-      border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.205);
-      box-sizing: border-box;
-      flex-grow: 1;
     }
-
-    #results h2 {
-      font-weight: 400;
-    }
-
-    #results p {
-      background-color: #e7a7ac;
-      color: #69131c;
-      border: 1px solid #e68d96;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    #result-list {
+    #year-form{
+      width: 100%;
       display: flex;
       flex-direction: column;
-      width: 100%;
-      height: 100%;
-      margin: 5px;
-      text-align: center;
-      justify-content: center;
-      align-items: center;
+      align-items: flex-end;
     }
-
-    #result-a {
-      display: flex;
-      width: 100%;
-      height: 40px;
-      background-color: transparent;
-      text-align: center;
-      font-size: 15pt;
-      text-decoration: none;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      text-shadow: 2px 2px 2px rgb(0, 0, 0);
-    }
-
-    #result-a:hover {
-      transition: 0.5s;
-      text-decoration: underline;
-    }
-
-    #results hr{
-      border: 1px white solid;
-      width: 90%;
-    }
-
-    #year-button-div {
-      background-color: transparent;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      display: flex;
-    }
-
     #pdfs {
-      background-color: rgba(255, 255, 255, 0.315);
-      padding: 10px;
+      width: 200px;
+      background-image: linear-gradient(to right, rgba(131, 131, 131, 0.5) 0%, rgba(255, 255, 255, 0.486)  51%, rgba(131, 131, 131, 0.5)  100%);
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 200% auto;
+      color: black;
+      box-shadow: 0 0 20px #ffffffe5;
+      border-radius: 5px;
       outline: none;
-      border: 1px rgba(255, 255, 255, 0.452) solid;
-      border-radius: 10px;
+      border: 1px rgba(255, 255, 255, 0.352) solid;
+      font-size: 15px;
+      letter-spacing: 1px;
+      padding: 10px 20px 10px 20px;
+      cursor: pointer;
     }
-
+    #pdfs:hover{
+      background-position: right center;
+      text-decoration: none;
+    }
     #pdfs-ul {
       background-color: transparent;
-      width: 90%;
-      max-height: 80px;
+      width: 200px;
+      max-height: 100px;
       height: fit-content;
       flex-direction: column;
       overflow-x: hidden;
       overflow-y: scroll;
       scrollbar-width: thin;
+      border-radius: 5px;
+      display: flex;
     }
-
-    #pdfs:hover {
-      cursor: pointer;
-      background-color: rgba(255, 255, 255, 0.61);
+    #year-button-div li{
+      width: 100%;
+      border-bottom: 1px white solid;
+      display: flex;
     }
-
     #year-button-div ul {
       list-style-type: none;
       text-align: center;
@@ -252,41 +110,181 @@
       padding: 0;
       background-color: rgba(255, 255, 255, 0.432);
     }
-
     #year-button-div li:hover {
       background-color: rgba(255, 255, 255, 0.658);
     }
-
     #year-button-div a {
       width: 100%;
-      padding: 0px 20px 0px 20px;
       font-size: medium;
       text-decoration: none;
-      color: white;
-      text-shadow: 2px 2px 2px rgb(0, 0, 0);
+      color: black;
+      padding: 5px;
     }
-
-    #footer {
-      width: 100%;
-      height: 30px;
-      background-color: rgb(107, 163, 238);
-      border-top: 1px rgba(255, 255, 255, 0.658) solid;
+    #search-form{
+      width: 80%;
+      height: 100%;
       display: flex;
+      color: black;
       justify-content: center;
       align-items: center;
-      margin-top: 50px;
-      left: 0;
-      bottom: 0;
-      flex-shrink: 0;
+      flex-direction: column;
+      padding: 40px;
     }
-
+    #heading {
+      margin: 20px;
+      font-weight: 400;
+      color: rgb(255, 255, 255);
+    }
+    #search-bar-div {
+      width: 70%;
+      height: fit-content;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    #search-box {
+      width: 100%;
+      border: none;
+      border-radius: 30px;
+      padding: 10px 40px 10px 20px;
+      position: relative;
+      transition: all 300ms;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+      font-size: 1rem;
+      color: #333;
+      outline: none;
+    }
+    #search-box:hover,
+    #search-box:focus {
+      box-shadow: rgba(17, 17, 26, 0.5) 0px 4px 16px, rgba(17, 17, 26, 0.5) 0px 8px 24px, rgba(17, 17, 26, 0.7) 0px 16px 56px;
+      background-color: rgb(255, 255, 255);
+    }
+    #clear-btn {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+    #clear-btn img {
+      width: 100%;
+      cursor: pointer;
+    }
+    #search-btn {
+      width: fit-content;
+      background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+      align-items: center;
+      appearance: none;
+      border: 0;
+      border-radius: 30px;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      display: inline-flex;
+      height: fit-content;
+      justify-content: center;
+      padding: 10px 30px 10px 30px;
+      margin: 20px;
+      position: relative;
+      text-align: left;
+      text-decoration: none;
+      transition: box-shadow .15s,transform .15s;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      white-space: nowrap;
+      will-change: box-shadow,transform;
+      font-size: 18px;
+      font-weight: normal;
+    }
+    #search-btn:hover, #search-btn:focus{
+      box-shadow: rgba(13, 98, 167, 0.548) 0 -25px 18px -14px inset,rgba(17, 92, 163, 0.664) 0 1px 2px,rgba(17, 92, 163, 0.753) 0 2px 4px,rgba(17, 92, 163, 0.808) 0 4px 8px,rgba(17, 93, 163,0.2) 0 8px 16px,rgba(17, 93, 163,0.2) 0 16px 32px; 
+      transform: scale(1.10);
+    }
+    #search-btn:active {
+      transform: translateY(2px);
+    }
+    #results {
+      width: 100%;
+      max-height: 400px;
+      padding: 10px 5px 10px 5px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      border: 10px transparent solid;
+      outline: 1px rgba(255, 255, 255, 0.74) solid;
+      border-radius: 10px;
+      background-color: white;
+      backdrop-filter: blur(50px);
+      box-sizing: border-box;
+    }
+    #results-txt {
+      color: rgb(255, 255, 255);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    #results p {
+      background-color:rgb(255, 255, 255);
+      color:rgb(197, 17, 35);
+      border: 1px solid rgb(255, 255, 255);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+    #result-list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: fit-content;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+    #result-a {
+      display: flex;
+      width: 90%;
+      height: 40px;
+      padding: 10px 0px 10px 0px;
+      text-align: center;
+      font-size: 15pt;
+      text-decoration: none;
+      justify-content: center;
+      align-items: center;
+      color: rgb(0, 0, 0);
+    }
+    #result-a:hover {
+      transition: 300ms;
+      text-decoration: underline;
+      background-color: rgb(223, 223, 223);
+    }
+    #results hr{
+      background-color: rgb(0, 0, 0);
+      width: 90%;
+    }
+    #footer {
+      width: 100%;
+      padding-top: 3px;
+      background-color: rgb(94, 161, 248);
+      margin-top: 30px;
+    }
     #footer p {
+      width: 100%;
+      height: 20px;
+      text-align: center;
       justify-content: center;
       align-items: center;
       font-size: 10pt;
-      font-weight: 600;
     }
-
     .loader-container {
       display: flex;
       position: fixed;
@@ -301,13 +299,11 @@
       height: 100vh;
       z-index: 1000;
     }
-
     .bouncing-dots {
       display: flex;
       justify-content: space-between;
       width: 60px;
     }
-
     .dot {
       width: 15px;
       height: 15px;
@@ -315,19 +311,15 @@
       border-radius: 50%;
       animation: bounce 1.5s infinite;
     }
-
     .dot:nth-child(1) {
       animation-delay: 0s;
     }
-
     .dot:nth-child(2) {
       animation-delay: 0.3s;
     }
-
     .dot:nth-child(3) {
       animation-delay: 0.6s;
     }
-
     @keyframes bounce {
 
       0%,
@@ -339,13 +331,12 @@
         transform: translateY(-20px);
       }
     }
-
     body.loading {
       overflow: hidden;
     }
 
 
-    /* Medium Devices (Tablets, 768px and up) */
+    /* Medium Devices (Tablets, 768px and up) 
     @media only screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 1.5),
     (min-resolution: 144dpi) {
       body{
@@ -402,165 +393,112 @@
       #footer p {
         font-size: 8pt;
       }
-    }
+    }*/
 
     /* Small Devices (Mobiles, 600px and down) */
-    @media only screen and (max-width: 900px) and (-webkit-min-device-pixel-ratio: 2),
-    (min-resolution: 192dpi) {
+    @media only screen and (max-width: 768px) {
       * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
       }
-
       #container {
         width: 100%;
         height: 100vh;
-        padding: 0;
-        margin: 0;
-      }
 
+      }
       #header_img {
         width: 100%;
         margin-bottom: 10px;
       }
-
       #small-container {
         width: 90%;
-        padding: 10px;
-        padding-top: 120px;
-        height: 500px;
+        padding: 5px;
+        height: 80vh;
         margin-bottom: 20px;
-        align-items: flex-start;
-        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: rgba(255, 255, 255, 0.13);
       }
-
-      #small-container form {
-        width: 100%;
+      #year-button-div{
+        min-width: 100%;
+      }
+      #pdfs{
+        width: 40%;
+        font-size: 10px;
+        border-radius: 10px;
+      }
+      #pdfs-ul{
+        width: 40%;
+        border: 1px rgba(207, 207, 207, 0.589) solid;
+      }
+      #heading{
+        font-size: 25px;
       }
       #search-form{
-        height: 90%;
+        width: 100%;
         display: flex;
+        padding: 10px;
         flex-direction: column;
         justify-content: flex-start;
       }
       #search-bar-div{
         width: 100%;
-        height: 35px;
       }
       #search-box {
         width: 100%;
-        height: 35px;
         font-size: 15px;
         padding: 10px;
-        padding-right: 25px
+        padding-right: 30px
       }
-
       #search-btn {
-        width: 35%;
-        height: 30px;
-        padding: 0;
+        padding: 8px 15px;
         font-size: 10pt;
-        margin-top: 25px;
+        margin: 5px;
       }
-
-      #clear-btn {
-        right: 12px;
-      }
-
-      #clear-btn img {
-        width: 15px;
-      }
-
       #results{
         width: 100%;
-        height: 300px;
-        max-height: 400px;
-        margin-top: 50px;
-        padding: 15px 10px 15px 10px;
+        min-height: 10%;
+        max-height: 60%;
+        padding: 10px;
       }
-
-      #results h2 {
-        font-size: 15px;
-      }
-
       #results-txt {
         font-size: 20px;
-        padding: 0;
-        height: 20px;
+        margin: 5px;
         align-items: flex-start;
         justify-content: flex-start;
       }
-
       #results p {
         font-size: 14px;
       }
-
       #result-list {
         margin: 0;
         height: fit-content;
       }
-
       #result-list hr {
         width: 100%;
-        margin: 15px;
       }
-
       #result-a {
         font-size: 10pt;
-        margin: 5px 0px;
       }
-
       #result-a:hover {
         font-size: 10pt;
       }
-
-      #year-button-div {
-        width: 100px;
-        height: 100px;
-        right: 0;
-        top: 0;
-        padding: 0;
-      }
-
-      #year-button-div form {
-        padding: 5px;
-      }
-
-      #year-form {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-      }
-
-      #pdfs {
-        width: 100%;
-        height: 40px;
-        padding: 0;
-        font-size: 10pt;
-      }
-
-      #pdfs-ul li a {
-        font-size: 10pt;
-      }
-
       #footer {
         width: 100%;
         height: fit-content;
         padding: 5px;
         margin-top: 0;
       }
-
       #footer p {
         width: 90%;
         font-size: 5pt;
       }
-
       .bouncing-dots {
         width: 50px;
       }
-
       .dot {
         width: 12px;
         height: 12px;
@@ -579,7 +517,7 @@
   </div>
   <div id="container">
     <div id="header">
-      <img id="header_img" src="{% static 'images/head_image.png' %}" alt="Header Image" />
+      <img id="header_img" src="{% static 'images/head_image2.png' %}" alt="Header Image" />
     </div>
     <div id="small-container">
       <div id="year-button-div">
@@ -597,13 +535,13 @@
         </form>
       </div>
       <form id="search-form" method="get" action="{% url 'search_view' %}">
-        <h1 id="heading">TC Journal Biblio</h1>
+        <h1 id="heading">TC JOURNAL BIBLIO</h1>
         <div id="search-bar-div">
           <input id="search-box" type="text" name="q" value="{{ request.GET.q }}" placeholder="Search content..." />
           <button type="button" id="clear-btn" onclick="clearSearch()"><img src="{% static 'images/clear.png' %}"></img>
           </button>
         </div>
-        <button id="search-btn" type="submit">Search</button>
+        <button id="search-btn" type="submit">SEARCH</button>
 
         {% if query %}
         <h2 id="results-txt">Results</h2>
@@ -627,7 +565,7 @@
       </form>
     </div>
     <div id="footer">
-      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems |<a href="https://www.linkedin.com/in/" style="text-decoration: none; color: black; font-size: 600;"> Jagannathan M </a> | <a href="https://www.linkedin.com/in/vijaysankar2005" style="text-decoration: none; color: black; font-size: 600;">Vijay S </a> | Abdul Kasif R A || Mentored
+      <p>Designed by 2022-25 batch B.Sc., CS., Cognitive Systems | Jagannathan M | Vijay S | Abdul Kasif R A || Mentored
         by Dr R. Moorthy <small>Librarian</small> and Dr. G. Rakesh <small>Head of Dept CS</small></p>
     </div>
   </div>
@@ -669,9 +607,16 @@
       searchBar.focus(); // Optionally keep the focus on the search bar
     }
 
+    const button = document.getElementById('pdfs');
+    const dropdownMenu = document.getElementById('pdfs-ul');
+
+    document.addEventListener('click', (event) => {
+    if (!dropdownMenu.contains(event.target) && !button.contains(event.target)) {
+      dropdownMenu.style.display = 'none';
+    }
+  });
 
   </script>
 
 </body>
-
 </html>
